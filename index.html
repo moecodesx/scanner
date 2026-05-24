@@ -258,6 +258,7 @@
         user-select: none;
         -webkit-user-select: none;
         touch-action: manipulation;
+        pointer-events: none;
       }
 
       /* ── Qty box ── */
@@ -2016,6 +2017,7 @@
               if (revealBtn) {
                 revealBtn.style.transition = "opacity 0.15s ease";
                 revealBtn.style.opacity = "1";
+                revealBtn.style.pointerEvents = "auto";
                 _revealBtn = revealBtn;
                 _revealedTr = tr;
               }
@@ -2027,11 +2029,14 @@
               if (revealBtn) {
                 revealBtn.style.transition = "opacity 0.15s ease";
                 revealBtn.style.opacity = "1";
+                revealBtn.style.pointerEvents = "auto";
               }
             } else {
-              // Didn't cross threshold — dismiss the pre-created button
+              // Didn't cross threshold — dismiss the pre-created button instantly
+              // (it was never visible, so no fade needed; immediate removal prevents
+              // a double-tap from hitting the still-in-DOM invisible element)
               setCellsX(0, true);
-              destroyRevealBtn(true);
+              destroyRevealBtn(false);
             }
           } else {
             if (currentX < -80) {
