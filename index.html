@@ -1862,6 +1862,13 @@
         { passive: true },
       );
 
+      document.addEventListener("focusin", (e) => {
+        if (!_revealedTr) return;
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+          hideRevealedDelete();
+        }
+      });
+
       function attachSwipe(tr) {
         const isMobile = () => window.innerWidth <= 640;
         const DELETE_W = 72;
@@ -1873,7 +1880,8 @@
           swiping = false;
         let revealed = false;
         let revealBtn = null,
-          scrollListener = null;
+          scrollListener = null,
+          resizeListener = null;
 
         function setCellsX(x, animate) {
           [...tr.cells].forEach((td) => {
@@ -1909,6 +1917,11 @@
           if (scrollListener) {
             window.removeEventListener("scroll", scrollListener);
             scrollListener = null;
+          }
+          if (resizeListener) {
+            (window.visualViewport || window).removeEventListener("resize", resizeListener);
+            (window.visualViewport || window).removeEventListener("scroll", resizeListener);
+            resizeListener = null;
           }
           _revealBtn = null;
           _revealedTr = null;
@@ -1959,9 +1972,12 @@
               });
 
               scrollListener = () => updateBtnPos();
-              window.addEventListener("scroll", scrollListener, {
-                passive: true,
-              });
+              window.addEventListener("scroll", scrollListener, { passive: true });
+
+              resizeListener = () => updateBtnPos();
+              const vv = window.visualViewport || window;
+              vv.addEventListener("resize", resizeListener, { passive: true });
+              vv.addEventListener("scroll", resizeListener, { passive: true });
             }
           },
           { passive: true },
