@@ -413,17 +413,22 @@
 
       .clear-search-btn {
         position: absolute;
-        right: 12px;
+        right: 10px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 14px;
+        font-size: 17px;
         cursor: pointer;
         color: var(--text-3);
         user-select: none;
+        -webkit-user-select: none;
         line-height: 1;
+        padding: 4px;
       }
 
-      .clear-search-btn.active { color: var(--danger); font-weight: 700; }
+      .clear-search-btn.active { color: var(--danger); }
+
+      #clearScanBtn { color: var(--text-3); transition: color .1s; }
+      #clearScanBtn.active { color: var(--danger); }
 
       .search-bar {
         flex: 1;
@@ -526,13 +531,13 @@
         bottom: 82px;
         right: 16px;
         width: 264px;
-        background: #d7a9a9;
+        background: #f0caca;
         border-radius: var(--r-lg);
         box-shadow: 0 16px 48px rgba(155,42,42,.25);
         padding: 14px;
         display: none;
         z-index: 9999;
-        border: 1px solid #e0b0b0;
+        border: 1px solid #daa8a8;
       }
 
       #calcHeader {
@@ -740,53 +745,83 @@
       #historyPanel {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,.55);
         z-index: 20000;
-        display: none;
+        display: flex;
         align-items: flex-end;
         justify-content: center;
+        pointer-events: none;
+        background: rgba(0,0,0,0);
+        transition: background .3s ease;
+      }
+
+      #historyPanel.open {
+        background: rgba(0,0,0,.55);
+        pointer-events: auto;
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
       }
-
-      #historyPanel.open { display: flex; }
 
       #historyBox {
         background: var(--surface);
         width: 100%;
         max-width: 560px;
         border-radius: var(--r-xl) var(--r-xl) 0 0;
-        padding: 18px 16px;
-        max-height: 75vh;
+        padding: 0 16px 18px;
+        height: 75vh;
         display: flex;
         flex-direction: column;
         box-shadow: 0 -4px 32px rgba(0,0,0,.15);
+        transform: translateY(100%);
+        transition: transform .35s cubic-bezier(0.32, 0.72, 0, 1),
+                    height .3s cubic-bezier(0.32, 0.72, 0, 1);
+        overflow: hidden;
+        will-change: transform;
       }
 
-      /* drag pill */
-      #historyBox::before {
+      #historyPanel.open #historyBox {
+        transform: translateY(0);
+      }
+
+      /* drag handle area */
+      #historyDragHandle {
+        flex-shrink: 0;
+        padding: 14px 0 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        touch-action: none;
+      }
+
+      #historyDragHandle::after {
         content: "";
         display: block;
         width: 36px;
         height: 4px;
         background: var(--border-strong);
         border-radius: 2px;
-        margin: -6px auto 14px;
       }
 
       #historyBox h3 {
         margin: 0 0 14px;
+        padding: 4px 0 4px 2px;
         font-size: 15px;
         font-weight: 700;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: var(--text-1);
+        flex-shrink: 0;
+        cursor: grab;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
       }
 
       #historyBox h3 span {
         font-size: 14px;
         cursor: pointer;
+        touch-action: auto;
         color: var(--text-3);
         width: 30px;
         height: 30px;
@@ -801,7 +836,7 @@
 
       #historyBox h3 span:hover { background: var(--border); color: var(--text-1); }
 
-      #historyList { overflow-y: auto; flex: 1; }
+      #historyList { overflow-y: auto; flex: 1; padding-bottom: 8px; }
 
       .history-item {
         border: 1.5px solid var(--border);
@@ -863,8 +898,8 @@
       /* ── Zoom controls ── */
       #zoomControls {
         position: absolute;
-        bottom: 10px;
-        right: 10px;
+        bottom: 16px;
+        right: 16px;
         display: none;
         flex-direction: column;
         align-items: center;
@@ -953,7 +988,7 @@
       @keyframes spin { to { transform: rotate(360deg); } }
 
       /* ── Row animations ── */
-      .delete-row { animation: rowDelete .5s ease-in forwards; }
+      .delete-row { animation: rowDelete .18s ease-in forwards; }
       .new-row    { animation: rowAdd .4s ease-out; }
 
       /* ── Top bar ── */
@@ -965,8 +1000,9 @@
         gap: 8px;
         background: var(--surface);
         border-radius: var(--r);
-        padding: 10px 12px;
+        padding: 8px 12px;
         box-shadow: var(--shadow-sm);
+        border: 1.5px solid var(--border);
       }
 
       .counts-left {
@@ -984,7 +1020,7 @@
         gap: 4px;
       }
 
-      .actions-right { display: flex; gap: 6px; }
+      .actions-right { display: flex; gap: 6px; position: relative; }
 
       .actions-right button {
         display: inline-flex;
@@ -1001,7 +1037,7 @@
       }
 
       button.small {
-        padding: 8px 11px;
+        padding: 6px 11px;
         font-size: 12px;
         border-radius: var(--r-sm);
         font-weight: 600;
@@ -1015,6 +1051,53 @@
 
       .history-btn.small  { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
       .history-btn.small:hover { background: var(--border); }
+
+      /* ── Settings button & dropdown ── */
+      .settings-btn.small {
+        background: var(--gradient);
+        color: var(--gradient-text);
+        transition: filter var(--t), transform .1s ease;
+        letter-spacing: .2px;
+      }
+      .settings-btn.small:hover { filter: brightness(1.35); }
+
+      .settings-menu {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 8px);
+        background: var(--surface);
+        border-radius: var(--r);
+        box-shadow: var(--shadow-lg);
+        border: 1.5px solid var(--border);
+        z-index: 10000;
+        min-width: 180px;
+        display: none;
+        overflow: hidden;
+      }
+      .settings-menu.open { display: block; }
+      .settings-menu button {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 13px 16px !important;
+        font-size: 14px !important;
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid var(--border) !important;
+        color: var(--text-1) !important;
+        font-weight: 500 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transform: none !important;
+        justify-content: flex-start !important;
+        white-space: nowrap !important;
+      }
+      .settings-menu button:last-child { border-bottom: none !important; }
+      .settings-menu button:hover { background: var(--surface-2) !important; }
+      .settings-menu button:active { transform: none !important; background: var(--border) !important; }
+      .settings-menu button.danger-item { color: var(--danger) !important; }
 
       /* ── Animations ── */
       @keyframes flashFade {
@@ -1177,9 +1260,79 @@
         text-transform: uppercase;
       }
 
-      .badge-draft    { background: #fef3c7; color: #92400e; }
-      .badge-exported { background: #d1fae5; color: #065f46; }
-      .badge-closed   { background: #f1f5f9; color: #475569; }
+      .badge-draft      { background: #fef3c7; color: #92400e; }
+      .badge-exported   { background: #d1fae5; color: #065f46; }
+      .badge-closed     { background: #f1f5f9; color: #475569; }
+      .badge-imported   { background: #dbeafe; color: #1e40af; }
+      .badge-reimported { background: #ede9fe; color: #5b21b6; }
+
+      /* ── Update banner ── */
+      #updateBanner {
+        display: none;
+        background: var(--gradient);
+        color: var(--gradient-text);
+        padding: 11px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: var(--r);
+        margin-bottom: 10px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+      }
+      #updateBanner.show { display: flex; }
+      #updateBanner span { flex: 1; }
+      #updateBanner button {
+        background: rgba(255,255,255,.2);
+        color: var(--gradient-text);
+        padding: 5px 12px;
+        border-radius: var(--r-sm);
+        font-size: 12px;
+        font-weight: 700;
+        border: 1px solid rgba(255,255,255,.3);
+        white-space: nowrap;
+      }
+
+      /* ── Session warning badge ── */
+      #sessionWarnBadge {
+        display: none;
+        font-size: 10px;
+        font-weight: 700;
+        background: var(--warning);
+        color: white;
+        border-radius: 100px;
+        padding: 1px 6px;
+        margin-left: 4px;
+        vertical-align: middle;
+      }
+      #sessionWarnBadge.show { display: inline; }
+
+      /* ── Empty state ── */
+      #emptyState {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 20px;
+        gap: 10px;
+        color: var(--text-3);
+        text-align: center;
+      }
+      #emptyState.show { display: flex; }
+      #emptyState svg { opacity: .35; }
+      #emptyState p {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-2);
+        margin: 0;
+      }
+      #emptyState small {
+        font-size: 12px;
+        color: var(--text-3);
+        line-height: 1.6;
+      }
 
       /* ── Save status ── */
       #saveStatus {
@@ -1191,7 +1344,9 @@
       /* ── Counts display ── */
       #counts {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
         font-size: 12px;
         font-weight: 600;
         color: var(--text-1);
@@ -1202,6 +1357,12 @@
   <body>
     <div class="container">
       <h2>Flooreno Scanner</h2>
+
+      <div id="updateBanner">
+        <span>🔄 Update available</span>
+        <button onclick="location.reload()">Refresh</button>
+        <button onclick="document.getElementById('updateBanner').classList.remove('show')" style="background:transparent;border:none;color:var(--gradient-text);font-size:16px;padding:4px 6px;">✕</button>
+      </div>
 
       <div
         id="restoreBanner"
@@ -1252,9 +1413,14 @@
             id="scanInput"
             type="text"
             placeholder="Scan or enter barcode"
-            style="width: 100%"
+            style="width: 100%; padding-right: 36px;"
             autocomplete="off"
           />
+          <span
+            id="clearScanBtn"
+            onclick="clearScanInput()"
+            style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:17px;cursor:pointer;user-select:none;-webkit-user-select:none;display:none;line-height:1;z-index:2;padding:4px;"
+          >✕</span>
           <div
             id="productSuggestions"
             style="
@@ -1275,6 +1441,7 @@
           ></div>
         </div>
       </div>
+      <input type="file" id="importFileInput" accept=".csv" style="display:none">
 
       <div class="top-bar">
         <div class="counts-left">
@@ -1287,14 +1454,14 @@
           </div>
         </div>
         <div id="saveStatus"></div>
-        <div class="actions-right">
-          <button class="history-btn small" onclick="openHistory()">
-            🕓 History
-          </button>
-          <button class="export-btn small" onclick="exportCSV()">
-            📤 Export
-          </button>
-          <button class="clear-btn small" onclick="clearAll()">🗑 Clear</button>
+        <div class="actions-right" id="actionsRight">
+          <button class="settings-btn small" id="settingsBtn" onclick="toggleSettingsMenu(event)">⚙ Menu</button>
+          <div class="settings-menu" id="settingsMenu">
+            <button onclick="openHistory(); closeSettingsMenu()">🕓 History<span id="sessionWarnBadge">⚠</span></button>
+            <button onclick="exportCSV(); closeSettingsMenu()">📤 Export</button>
+            <button onclick="triggerImport()">📂 Import</button>
+            <button class="danger-item" onclick="clearAll(); closeSettingsMenu()">🗑 Clear</button>
+          </div>
         </div>
       </div>
 
@@ -1319,6 +1486,19 @@
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
+
+      <div id="emptyState">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="44" height="36" rx="6" stroke="#a07070" stroke-width="2.5" fill="none"/>
+          <rect x="10" y="14" width="5" height="24" rx="1.5" fill="#a07070"/>
+          <rect x="18" y="14" width="2.5" height="24" rx="1.5" fill="#a07070"/>
+          <rect x="23" y="14" width="7" height="24" rx="1.5" fill="#a07070"/>
+          <rect x="33" y="14" width="2.5" height="24" rx="1.5" fill="#a07070"/>
+          <rect x="38" y="14" width="4" height="24" rx="1.5" fill="#a07070"/>
+        </svg>
+        <p>Nothing scanned yet</p>
+        <small>Start camera to scan barcodes,<br>or use ⚙ Menu → Import to load a list.</small>
+      </div>
     </div>
 
     <!-- Undo toast -->
@@ -1359,6 +1539,7 @@
     <!-- Session History panel -->
     <div id="historyPanel">
       <div id="historyBox">
+        <div id="historyDragHandle"></div>
         <h3>Session History <span onclick="closeHistory()">✕</span></h3>
         <div id="historyList"></div>
         <div id="historyEmpty" style="display: none">
@@ -1393,9 +1574,17 @@
 
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("./sw.js")
+        navigator.serviceWorker.register("./sw.js")
+          .then((reg) => {
+            // Poll for updates every 60s (GitHub Pages deployments)
+            setInterval(() => reg.update(), 60000);
+          })
           .catch((e) => console.warn("SW reg failed", e));
+
+        // When a new SW takes control, show the update banner
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          document.getElementById("updateBanner").classList.add("show");
+        });
       }
     </script>
 
@@ -1519,11 +1708,22 @@
 
           const okBtn = document.createElement("button");
           okBtn.textContent = "OK";
-          okBtn.style.background = GRAD;
-          okBtn.style.color = "#f5ede6";
+          okBtn.style.transition = "background .15s, opacity .15s";
+
+          function syncOkState() {
+            const hasVal = field.value.trim().length > 0;
+            okBtn.disabled = !hasVal;
+            okBtn.style.background = hasVal ? GRAD : "#d0c8c5";
+            okBtn.style.color = hasVal ? "#f5ede6" : "#a09890";
+            okBtn.style.cursor = hasVal ? "pointer" : "not-allowed";
+          }
+          syncOkState();
+          field.addEventListener("input", syncOkState);
+
           okBtn.onclick = () => {
+            if (!field.value.trim()) return;
             modal.classList.remove("open");
-            resolve(field.value.trim() || null);
+            resolve(field.value.trim());
           };
 
           const cancelBtn = document.createElement("button");
@@ -1538,7 +1738,7 @@
           field.onkeydown = (e) => {
             if (e.key === "Enter") {
               e.preventDefault();
-              okBtn.click();
+              if (field.value.trim()) okBtn.click();
             }
             if (e.key === "Escape") {
               cancelBtn.click();
@@ -1642,32 +1842,59 @@
       }
 
       /* ─── Beep ───────────────────────────────────────────── */
+      let _audioCtx = null;
+
+      function _getAudioCtx() {
+        if (!_audioCtx || _audioCtx.state === "closed") {
+          _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        return _audioCtx;
+      }
+
+      // Resume audio context when page becomes visible (tab-switch fix)
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && _audioCtx && _audioCtx.state === "suspended") {
+          _audioCtx.resume();
+        }
+      });
+
+      // Unlock audio context on first user gesture (iOS requires this)
+      function _unlockAudio() {
+        const ctx = _getAudioCtx();
+        if (ctx.state === "suspended") ctx.resume();
+        document.removeEventListener("touchstart", _unlockAudio, true);
+        document.removeEventListener("mousedown", _unlockAudio, true);
+      }
+      document.addEventListener("touchstart", _unlockAudio, { passive: true, capture: true });
+      document.addEventListener("mousedown",  _unlockAudio, { passive: true, capture: true });
+
       function playBeep(type = "ok") {
         try {
-          const ctx = new (window.AudioContext || window.webkitAudioContext)();
-          const o = ctx.createOscillator(),
-            g = ctx.createGain();
-          o.connect(g);
-          g.connect(ctx.destination);
-          if (type === "error") {
-            o.frequency.value = 1000;
-            g.gain.value = 0.3;
-            o.start();
-            o.stop(ctx.currentTime + 0.2);
-            const o2 = ctx.createOscillator(),
-              g2 = ctx.createGain();
-            o2.frequency.value = 1000;
-            g2.gain.value = 0.3;
-            o2.connect(g2);
-            g2.connect(ctx.destination);
-            o2.start(ctx.currentTime + 0.22);
-            o2.stop(ctx.currentTime + 0.4);
-          } else {
-            o.frequency.value = 2000;
-            g.gain.value = 0.2;
-            o.start();
-            o.stop(ctx.currentTime + 0.1);
-          }
+          const ctx = _getAudioCtx();
+          const resume = ctx.state === "suspended" ? ctx.resume() : Promise.resolve();
+          resume.then(() => {
+            const o = ctx.createOscillator(), g = ctx.createGain();
+            o.connect(g);
+            g.connect(ctx.destination);
+            if (type === "error") {
+              o.frequency.value = 1000;
+              g.gain.value = 0.3;
+              o.start();
+              o.stop(ctx.currentTime + 0.2);
+              const o2 = ctx.createOscillator(), g2 = ctx.createGain();
+              o2.frequency.value = 1000;
+              g2.gain.value = 0.3;
+              o2.connect(g2);
+              g2.connect(ctx.destination);
+              o2.start(ctx.currentTime + 0.22);
+              o2.stop(ctx.currentTime + 0.4);
+            } else {
+              o.frequency.value = 2000;
+              g.gain.value = 0.2;
+              o.start();
+              o.stop(ctx.currentTime + 0.1);
+            }
+          }).catch(() => {});
         } catch (e) {}
       }
 
@@ -1866,9 +2093,21 @@
       document.addEventListener("focusin", (e) => {
         if (!_revealedTr) return;
         if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
-          hideRevealedDelete();
+          // Immediate removal (no fade) prevents the fixed button from
+          // jumping when iOS shifts the viewport to show the keyboard.
+          if (_revealedTr._hideImmediate) _revealedTr._hideImmediate();
+          else hideRevealedDelete();
         }
       });
+
+      // Also hide instantly when the visual viewport resizes (keyboard open/close on iOS)
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => {
+          if (_revealedTr && _revealedTr._hideImmediate) {
+            _revealedTr._hideImmediate();
+          }
+        }, { passive: true });
+      }
 
       function attachSwipe(tr) {
         const isMobile = () => window.innerWidth <= 640;
@@ -1932,6 +2171,12 @@
           revealed = false;
           setCellsX(0, true);
           destroyRevealBtn(true);
+        };
+
+        tr._hideImmediate = () => {
+          revealed = false;
+          setCellsX(0, false);
+          destroyRevealBtn(false);
         };
 
         tr.addEventListener(
@@ -2057,8 +2302,11 @@
       function addRowFast(barcode, qty, flagDeleted = false) {
         document.getElementById("productSuggestions").style.display = "none";
         scanInput.value = "";
+        const _clrBtn = document.getElementById("clearScanBtn");
+        if (_clrBtn) _clrBtn.style.display = "none";
         barcode = normaliseBarcode(barcode);
         if (!isLoading) ensureActiveSession();
+        if (!isLoading) enableUnloadGuard();
 
         const product = productMap[barcode];
         const isMissing = !product;
@@ -2273,20 +2521,29 @@
       });
 
       let suppressBlur = false;
+      // Blur no longer adds items — only Enter or suggestion tap does.
+      // This prevents phantom adds when tapping elsewhere on mobile.
       scanInput.addEventListener("blur", () => {
         if (suppressBlur) {
           suppressBlur = false;
-          return;
         }
-        setTimeout(() => {
-          if (scanInput.value.trim()) tryAddFromInput();
-        }, 150);
       });
 
+      function clearScanInput() {
+        scanInput.value = "";
+        document.getElementById("productSuggestions").style.display = "none";
+        document.getElementById("clearScanBtn").style.display = "none";
+        scanInput.focus();
+      }
+
       /* ─── Suggestions ────────────────────────────────────── */
-      scanInput.addEventListener("input", (e) =>
-        searchProducts(e.target.value),
-      );
+      scanInput.addEventListener("input", (e) => {
+        const clearBtn = document.getElementById("clearScanBtn");
+        const hasValue = !!e.target.value;
+        clearBtn.style.display = hasValue ? "block" : "none";
+        clearBtn.classList.toggle("active", hasValue);
+        searchProducts(e.target.value);
+      });
 
       function searchProducts(query) {
         const box = document.getElementById("productSuggestions");
@@ -2320,17 +2577,9 @@
         }
 
         box.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:11px;color:#5c3535;background:#fdf0ee;border-bottom:1px solid #f0d8d6;font-weight:600;letter-spacing:.3px;text-transform:uppercase;">
-          <span>${results.length} result${results.length === 1 ? "" : "s"}</span>
-          <span id="closeSuggestionsBtn" style="cursor:pointer;font-size:14px;font-weight:700;color:#a07070;padding:0 4px;">✕</span>
+        <div style="padding:7px 12px;font-size:11px;color:#5c3535;background:#fdf0ee;border-bottom:1px solid #f0d8d6;font-weight:600;letter-spacing:.3px;text-transform:uppercase;">
+          ${results.length} result${results.length === 1 ? "" : "s"}
         </div>`;
-
-        document.getElementById("closeSuggestionsBtn").onmousedown = (e) => {
-          e.preventDefault();
-          suppressBlur = true;
-          box.style.display = "none";
-          scanInput.value = "";
-        };
 
         results.forEach((item) => {
           const div = document.createElement("div");
@@ -2341,9 +2590,24 @@
             e.preventDefault();
             suppressBlur = true;
             box.style.display = "none";
+            document.getElementById("clearScanBtn").style.display = "none";
             addRowFast(item.sku, 1);
             scanInput.value = "";
           };
+          // Touch support for mobile suggestion taps — ignore if finger scrolled
+          let _sugTouchY = 0;
+          div.addEventListener("touchstart", (e) => {
+            _sugTouchY = e.touches[0].clientY;
+          }, { passive: true });
+          div.addEventListener("touchend", (e) => {
+            if (Math.abs(e.changedTouches[0].clientY - _sugTouchY) > 8) return;
+            e.preventDefault();
+            suppressBlur = true;
+            box.style.display = "none";
+            document.getElementById("clearScanBtn").style.display = "none";
+            addRowFast(item.sku, 1);
+            scanInput.value = "";
+          }, { passive: false });
           box.appendChild(div);
         });
         box.style.display = "block";
@@ -2358,27 +2622,41 @@
       });
 
       /* ─── Search ─────────────────────────────────────────── */
+      function _norm(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ""); }
+
+      function fuzzyMatch(text, query) {
+        const nText = _norm(text);
+        const nQuery = _norm(query);
+        if (nQuery && nText.includes(nQuery)) return true;
+        // Word-by-word fallback (original casing, space-split)
+        const lText = text.toLowerCase();
+        return query.toLowerCase().split(/\s+/).filter(Boolean).every((w) => lText.includes(w));
+      }
+
       searchInput.addEventListener("input", () => {
         clearSearchBtn.classList.toggle("active", !!searchInput.value.trim());
         searchTable();
       });
 
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") { e.preventDefault(); searchInput.blur(); }
+      });
+
       function searchTable() {
-        const q = searchInput.value.toLowerCase().trim();
+        const q = searchInput.value.trim();
         tableBody.querySelectorAll("tr").forEach((row) => {
           const sku = row.querySelector(".sku-id").innerText;
-          const vendorID = (productMap[sku]?.vendorID || "").toLowerCase();
-          row.style.display =
-            row.innerText.toLowerCase().includes(q) || vendorID.includes(q)
-              ? ""
-              : "none";
+          const desc = productMap[sku]?.description || "";
+          const vendorID = productMap[sku]?.vendorID || "";
+          const searchText = `${sku} ${desc} ${vendorID}`;
+          row.style.display = !q || fuzzyMatch(searchText, q) ? "" : "none";
         });
       }
 
       function clearSearch() {
         searchInput.value = "";
-        tableBody.querySelectorAll("tr").forEach((r) => (r.style.display = ""));
         clearSearchBtn.classList.remove("active");
+        searchTable();
       }
 
       /* ─── Helpers ────────────────────────────────────────── */
@@ -2429,10 +2707,12 @@
           r.classList.contains("missing-item"),
         ).length;
         countsDiv.innerHTML =
-          `Unique SKUs: ${skus.size}` +
+          `<span>Unique SKUs: ${skus.size}</span>` +
           (missing > 0
-            ? `&nbsp;<span style="color:#c12525;font-weight:700;">Not Found: ${missing}</span>`
+            ? `<span style="color:var(--text-3);font-weight:400;">|</span><span style="color:#c12525;font-weight:700;">Not Found: ${missing}</span>`
             : "");
+        const emptyEl = document.getElementById("emptyState");
+        if (emptyEl) emptyEl.classList.toggle("show", rows.length === 0);
       }
 
       function scrollToTopSmooth() {
@@ -2540,6 +2820,22 @@
         2 * 60 * 1000,
       );
 
+      /* ─── Unsaved-data guard ────────────────────────────── */
+      let _unloadGuardActive = false;
+      function _beforeUnloadHandler(e) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+      function enableUnloadGuard() {
+        if (_unloadGuardActive) return;
+        window.addEventListener("beforeunload", _beforeUnloadHandler);
+        _unloadGuardActive = true;
+      }
+      function disableUnloadGuard() {
+        window.removeEventListener("beforeunload", _beforeUnloadHandler);
+        _unloadGuardActive = false;
+      }
+
       /* ─── Session History ────────────────────────────────── */
       function getSessions() {
         return JSON.parse(localStorage.getItem("sessionHistory") || "[]");
@@ -2555,9 +2851,24 @@
         return Math.max(...sessions.map((s) => s.num || 0)) + 1;
       }
 
-      function ensureActiveSession() {
+      function updateSessionWarningBadge() {
+        const count = getSessions().length;
+        const badge = document.getElementById("sessionWarnBadge");
+        if (badge) badge.classList.toggle("show", count >= 28);
+      }
+
+      async function ensureActiveSession() {
         if (isLoading) return;
         if (activeSession) return;
+        const sessions = getSessions();
+        if (sessions.length >= 30) {
+          const ok = await showConfirm(
+            "History is full (30/30). The oldest session will be removed. Continue?",
+            "Continue",
+            "Cancel",
+          );
+          if (!ok) return;
+        }
         activeSession = {
           id: Date.now(),
           num: nextSessionNum(),
@@ -2567,9 +2878,9 @@
           items: [],
           exportName: null,
         };
-        const sessions = getSessions();
         sessions.unshift(activeSession);
         saveSessions(sessions.slice(0, 30));
+        updateSessionWarningBadge();
       }
 
       function updateActiveSession() {
@@ -2598,6 +2909,7 @@
           s.id === activeSession.id ? activeSession : s,
         );
         saveSessions(sessions.slice(0, 30));
+        updateSessionWarningBadge();
       }
 
       function markSessionExported(filename) {
@@ -2605,6 +2917,7 @@
         activeSession.status = "Exported";
         activeSession.exportName = filename;
         updateActiveSession();
+        disableUnloadGuard();
       }
 
       function closeActiveSession() {
@@ -2637,14 +2950,17 @@
                 : "";
             const status = s.status || (s.csv ? "Exported" : "Draft");
             const badgeClass =
-              status === "Exported"
-                ? "badge-exported"
-                : status === "Closed"
-                  ? "badge-closed"
-                  : "badge-draft";
+              status === "Exported"     ? "badge-exported"   :
+              status === "Closed"       ? "badge-closed"     :
+              status === "Imported"     ? "badge-imported"   :
+              status === "Re-imported"  ? "badge-reimported" :
+                                          "badge-draft";
             const warnIcon = status === "Draft" ? " ⚠️" : "";
             const exportLine = s.exportName
               ? `<span style="font-size:11px;color:#64748b;">📁 ${s.exportName}</span>`
+              : "";
+            const reimportLine = s.reimportedFrom
+              ? `<span style="font-size:11px;color:#5b21b6;">↩ from Session #${s.reimportedFrom}</span>`
               : "";
 
             const hasItems =
@@ -2660,10 +2976,11 @@
               ${startTime} &mdash; ${totalItems} item${totalItems === 1 ? "" : "s"}
               ${deletedNote}
               ${exportLine}
+              ${reimportLine}
             </div>
             <div class="history-actions">
               ${hasItems ? `<button class="btn-reimport" onclick="reImport(${s.id})">↩ Re-import</button>` : ""}
-              ${isExported ? `<button class="btn-reexport" onclick="reExport(${s.id})">📤 Re-export</button>` : ""}
+              ${isExported || status === "Imported" ? `<button class="btn-reexport" onclick="reExport(${s.id})">📤 Export</button>` : ""}
               <button class="btn-del-hist" onclick="deleteSession(${s.id})">🗑</button>
             </div>`;
             list.appendChild(div);
@@ -2674,7 +2991,12 @@
       }
 
       function closeHistory() {
-        document.getElementById("historyPanel").classList.remove("open");
+        const panel = document.getElementById("historyPanel");
+        panel.classList.remove("open");
+        // Reset sheet state after transition completes
+        setTimeout(() => {
+          if (panel._sheetReset) panel._sheetReset();
+        }, 380);
       }
 
       // Close if tapping backdrop
@@ -2682,6 +3004,119 @@
         if (e.target === document.getElementById("historyPanel"))
           closeHistory();
       });
+
+      /* ─── History sheet drag ─────────────────────────────── */
+      (function setupHistoryDrag() {
+        const panel  = document.getElementById("historyPanel");
+        const box    = document.getElementById("historyBox");
+        const handle = document.getElementById("historyDragHandle");
+        const h3     = box.querySelector("h3");
+
+        const DEFAULT_VH  = 75;
+        const MAX_VH      = 92;
+        const CLOSE_PX    = 110;
+        const COLLAPSE_PX = 80;
+        const EXPAND_PX   = 55;
+
+        let isExpanded = false;
+        let dragging   = false;
+        let startY     = 0;
+        let lastDy     = 0;
+
+        panel._sheetReset = () => {
+          isExpanded = false;
+          box.style.height     = "";
+          box.style.transform  = "";
+          box.style.transition = "";
+          panel.style.background  = "";
+          panel.style.transition  = "";
+        };
+
+        function snapTo(vh) {
+          box.style.transition = "transform .3s cubic-bezier(0.32,.72,0,1), height .3s cubic-bezier(0.32,.72,0,1)";
+          box.style.height     = vh + "vh";
+          box.style.transform  = "";
+          panel.style.transition  = "background .3s ease";
+          panel.style.background  = "";
+        }
+
+        function closeAnimated() {
+          box.style.transition    = "transform .3s cubic-bezier(0.32,.72,0,1)";
+          box.style.transform     = "translateY(100%)";
+          panel.style.transition  = "background .3s ease";
+          panel.style.background  = "rgba(0,0,0,0)";
+          setTimeout(() => {
+            panel.classList.remove("open");
+            panel._sheetReset();
+          }, 310);
+        }
+
+        function onTouchStart(clientY) {
+          dragging = true;
+          startY   = clientY;
+          lastDy   = 0;
+          box.style.transition   = "none";
+          panel.style.transition = "none";
+        }
+
+        function onTouchMove(clientY) {
+          if (!dragging) return;
+          const dy = clientY - startY;
+          lastDy = dy;
+          if (dy > 0) {
+            box.style.transform = `translateY(${dy}px)`;
+            const dimFactor = isExpanded ? 0.3 : 1;
+            const alpha = Math.max(0, 0.55 - (dy / 260) * dimFactor);
+            panel.style.background = `rgba(0,0,0,${alpha})`;
+          } else {
+            const baseVH = isExpanded ? MAX_VH : DEFAULT_VH;
+            const baseH  = window.innerHeight * baseVH / 100;
+            const newH   = Math.min(window.innerHeight * MAX_VH / 100, baseH - dy);
+            box.style.height    = newH + "px";
+            box.style.transform = "";
+          }
+        }
+
+        function onTouchEnd() {
+          if (!dragging) return;
+          dragging = false;
+          const dy = lastDy;
+          if (dy > 0) {
+            if (isExpanded && dy > COLLAPSE_PX) {
+              isExpanded = false;
+              snapTo(DEFAULT_VH);
+            } else if (!isExpanded && dy > CLOSE_PX) {
+              closeAnimated();
+            } else {
+              snapTo(isExpanded ? MAX_VH : DEFAULT_VH);
+            }
+          } else {
+            if (-dy > EXPAND_PX && !isExpanded) {
+              isExpanded = true;
+              snapTo(MAX_VH);
+            } else {
+              snapTo(isExpanded ? MAX_VH : DEFAULT_VH);
+            }
+          }
+        }
+
+        // Attach to pill handle
+        handle.addEventListener("touchstart", (e) => onTouchStart(e.touches[0].clientY), { passive: true });
+        handle.addEventListener("touchmove",  (e) => { e.preventDefault(); onTouchMove(e.touches[0].clientY); }, { passive: false });
+        handle.addEventListener("touchend",   onTouchEnd);
+
+        // Also attach to h3 (excluding the ✕ close button)
+        h3.addEventListener("touchstart", (e) => {
+          if (e.target.closest("span")) return;
+          onTouchStart(e.touches[0].clientY);
+        }, { passive: true });
+        h3.addEventListener("touchmove", (e) => {
+          if (!dragging) return;
+          e.preventDefault();
+          onTouchMove(e.touches[0].clientY);
+        }, { passive: false });
+        h3.addEventListener("touchend", onTouchEnd);
+      })();
 
       function reExport(id) {
         const session = getSessions().find((s) => s.id === id);
@@ -2737,6 +3172,24 @@
 
         function doImport(replace) {
           modal.classList.remove("open");
+
+          // Always create a new session entry for the re-import
+          closeActiveSession();
+          activeSession = {
+            id: Date.now(),
+            num: nextSessionNum(),
+            startTime: new Date().toLocaleString(),
+            status: "Re-imported",
+            skuCount: 0,
+            items: [],
+            exportName: null,
+            reimportedFrom: session.num,
+          };
+          const sessions = getSessions();
+          sessions.unshift(activeSession);
+          saveSessions(sessions.slice(0, 30));
+          updateSessionWarningBadge();
+
           if (replace) {
             tableBody.innerHTML = "";
             localStorage.removeItem("scannedItems");
@@ -2752,6 +3205,7 @@
           save();
           highlightDuplicates();
           updateUniqueCount();
+          updateActiveSession();
           closeHistory();
           scrollToTopSmooth();
         }
@@ -2770,6 +3224,7 @@
         if (!ok) return;
         if (activeSession && activeSession.id === id) activeSession = null;
         saveSessions(getSessions().filter((s) => s.id !== id));
+        updateSessionWarningBadge();
         openHistory();
       }
 
@@ -2786,6 +3241,7 @@
         localStorage.removeItem("scannedItems");
         localStorage.removeItem("scannedItems_backup");
         activeSession = null;
+        disableUnloadGuard();
         highlightDuplicates();
         updateUniqueCount();
         if (cameraRunning) {
@@ -2814,7 +3270,7 @@
           if (!ok) return;
         }
 
-        let name = await showPrompt("Enter file name:", "scanned_items");
+        let name = await showPrompt("Enter file name:", "");
         if (!name) return;
         if (!name.endsWith(".csv")) name += ".csv";
 
@@ -2869,7 +3325,7 @@
           }
         });
 
-        function calculate() {
+        function calculate(showError) {
           try {
             let exp = display.value;
             exp = exp.replace(
@@ -2890,7 +3346,7 @@
             result.innerText = "= " + res;
             return res;
           } catch {
-            result.innerText = "Invalid";
+            result.innerText = showError ? "Invalid" : "";
             return null;
           }
         }
@@ -2905,18 +3361,143 @@
             }
             if (val === "⌫") {
               display.value = display.value.slice(0, -1);
-              calculate();
+              calculate(false);
               return;
             }
             if (val === "=") {
-              const r = calculate();
+              const r = calculate(true);
               if (r !== null) display.value = r;
               return;
             }
             display.value += val;
-            calculate();
+            calculate(false);
           };
         });
+      });
+
+      /* ─── Settings menu ─────────────────────────────────── */
+      function toggleSettingsMenu(e) {
+        e.stopPropagation();
+        document.getElementById("settingsMenu").classList.toggle("open");
+      }
+
+      function closeSettingsMenu() {
+        document.getElementById("settingsMenu").classList.remove("open");
+      }
+
+      document.addEventListener("click", (e) => {
+        const btn = document.getElementById("settingsBtn");
+        const menu = document.getElementById("settingsMenu");
+        if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+          closeSettingsMenu();
+        }
+      });
+
+      /* ─── Import CSV file ────────────────────────────────── */
+      function triggerImport() {
+        document.getElementById("importFileInput").click();
+        closeSettingsMenu();
+      }
+
+      function parseCSVLine(line) {
+        const result = [];
+        let cur = "";
+        let inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          if (line[i] === '"') { inQ = !inQ; }
+          else if (line[i] === "," && !inQ) { result.push(cur); cur = ""; }
+          else { cur += line[i]; }
+        }
+        result.push(cur);
+        return result;
+      }
+
+      document.getElementById("importFileInput").addEventListener("change", async function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        this.value = ""; // reset so the same file can be re-imported later
+
+        let text;
+        try { text = await file.text(); }
+        catch { showAlert("Could not read the file."); return; }
+
+        const rawLines = text.split(/\r?\n/).map((l) => l.trim()).filter((l) => l);
+        if (!rawLines.length) { showAlert("The file appears to be empty."); return; }
+
+        const header = parseCSVLine(rawLines[0]).map((h) => h.trim().replace(/"/g, "").toLowerCase());
+        const skuCol = header.findIndex((h) =>
+          h === "system id" || h === "system_id" || h === "sku" || h === "id"
+        );
+        const qtyCol = header.findIndex((h) =>
+          h === "order qty" || h === "order_qty" || h === "qty" || h === "quantity"
+        );
+
+        if (skuCol === -1) {
+          showAlert('Could not find a "System Id" column.\n\nMake sure the first row has headers like "System Id" and optionally "Order Qty".');
+          return;
+        }
+
+        const items = [];
+        for (let i = 1; i < rawLines.length; i++) {
+          const cols = parseCSVLine(rawLines[i]);
+          const sku = (cols[skuCol] || "").trim().replace(/"/g, "");
+          if (!sku) continue;
+          const qty = qtyCol !== -1 ? (parseInt(cols[qtyCol]) || 1) : 1;
+          items.push({ id: sku, qty: Math.max(1, qty) });
+        }
+
+        if (!items.length) { showAlert("No valid rows found in the file."); return; }
+
+        const modal = document.getElementById("reimportModal");
+        const msg = document.getElementById("reimportMsg");
+        const addBtn = document.getElementById("reimportAddBtn");
+        const repBtn = document.getElementById("reimportReplaceBtn");
+        const canBtn = document.getElementById("reimportCancelBtn");
+
+        const qtyNote = qtyCol === -1 ? " (no Qty column — defaulting to 1 each)" : "";
+        msg.textContent = `Import ${items.length} item(s) from "${file.name}"${qtyNote}. How would you like to add them?`;
+        modal.classList.add("open");
+
+        function doFileImport(replace) {
+          modal.classList.remove("open");
+
+          // Create a new session immediately for this file import
+          closeActiveSession();
+          activeSession = {
+            id: Date.now(),
+            num: nextSessionNum(),
+            startTime: new Date().toLocaleString(),
+            status: "Imported",
+            skuCount: 0,
+            items: [],
+            exportName: file.name,
+            importedFrom: file.name,
+          };
+          const sessions = getSessions();
+          sessions.unshift(activeSession);
+          saveSessions(sessions.slice(0, 30));
+          updateSessionWarningBadge();
+
+          if (replace) {
+            tableBody.innerHTML = "";
+            localStorage.removeItem("scannedItems");
+          }
+
+          isLoading = true;
+          [...items].reverse().forEach((d) => addRowFast(d.id, d.qty, false));
+          isLoading = false;
+
+          renumber();
+          save();
+          highlightDuplicates();
+          updateUniqueCount();
+          updateActiveSession();
+          scrollToTopSmooth();
+        }
+
+        addBtn.onclick = () => doFileImport(false);
+        repBtn.onclick = () => doFileImport(true);
+        canBtn.onclick = () => modal.classList.remove("open");
       });
 
       /* ─── Boot ───────────────────────────────────────────── */
@@ -2924,6 +3505,7 @@
         load();
         highlightDuplicates();
         updateUniqueCount();
+        updateSessionWarningBadge();
 
         // Restore banner: show if main key is empty but backup has data
         const mainData = JSON.parse(
@@ -2941,7 +3523,10 @@
         if (tableBody.children.length) {
           const sessions = getSessions();
           const draft = sessions.find((s) => s.status === "Draft");
-          if (draft) activeSession = draft;
+          if (draft) {
+            activeSession = draft;
+            enableUnloadGuard();
+          }
         }
       });
     </script>
