@@ -9,7 +9,10 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='15' width='80' height='70' rx='12' fill='%234f46e5'/><rect x='20' y='25' width='60' height='50' rx='6' fill='white'/><rect x='28' y='30' width='4' height='40' fill='%230f172a'/><rect x='36' y='30' width='2' height='40' fill='%230f172a'/><rect x='42' y='30' width='6' height='40' fill='%230f172a'/><rect x='52' y='30' width='2' height='40' fill='%230f172a'/><rect x='58' y='30' width='5' height='40' fill='%230f172a'/><rect x='66' y='30' width='3' height='40' fill='%230f172a'/></svg>"
@@ -18,41 +21,46 @@
     <style>
       /* ── Design tokens ── */
       :root {
-        --gradient:       linear-gradient(140deg, #1d1919, #741f1f);
-        --gradient-text:  #fde8e8;
-        --primary:        #741f1f;
-        --primary-light:  #fdf0ee;
-        --danger:         #c12525;
-        --danger-hover:   #dc2626;
-        --danger-light:   #fef2f2;
-        --danger-border:  #fecaca;
-        --success:        #059669;
-        --warning:        #d97706;
-        --warning-light:  #fffbeb;
+        --gradient: linear-gradient(140deg, #1d1919, #741f1f);
+        --gradient-text: #fde8e8;
+        --primary: #741f1f;
+        --primary-light: #fdf0ee;
+        --danger: #c12525;
+        --danger-hover: #dc2626;
+        --danger-light: #fef2f2;
+        --danger-border: #fecaca;
+        --success: #059669;
+        --warning: #d97706;
+        --warning-light: #fffbeb;
         --warning-border: #fcd34d;
-        --bg:             #fdf5f4;
-        --surface:        #ffffff;
-        --surface-2:      #fdf0ee;
-        --border:         #f0d8d6;
-        --border-strong:  #e0c0bc;
-        --text-1:         #1d1919;
-        --text-2:         #5c3535;
-        --text-3:         #a07070;
-        --header-bg:      #1d1919;
-        --r-xs:  4px;
-        --r-sm:  6px;
-        --r:    10px;
+        --bg: #fdf5f4;
+        --surface: #ffffff;
+        --surface-2: #fdf0ee;
+        --border: #f0d8d6;
+        --border-strong: #e0c0bc;
+        --text-1: #1d1919;
+        --text-2: #5c3535;
+        --text-3: #a07070;
+        --header-bg: #1d1919;
+        --r-xs: 4px;
+        --r-sm: 6px;
+        --r: 10px;
         --r-lg: 14px;
         --r-xl: 20px;
-        --shadow-xs: 0 1px 2px rgba(0,0,0,.05);
-        --shadow-sm: 0 1px 4px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
-        --shadow:    0 4px 14px rgba(0,0,0,.08);
-        --shadow-lg: 0 12px 36px rgba(0,0,0,.14);
-        --t: .15s ease;
-        --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-sm:
+          0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.14);
+        --t: 0.15s ease;
+        --font:
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+          sans-serif;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
@@ -76,11 +84,11 @@
         color: var(--gradient-text);
         font-size: 17px;
         font-weight: 700;
-        letter-spacing: -.3px;
+        letter-spacing: -0.3px;
         display: flex;
         align-items: center;
         gap: 9px;
-        box-shadow: 0 2px 8px rgba(0,0,0,.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         text-align: left;
       }
 
@@ -91,18 +99,26 @@
         height: 18px;
         background: repeating-linear-gradient(
           90deg,
-          #fff 0px, #fff 2px,
-          transparent 2px, transparent 4px,
-          #fff 4px, #fff 5px,
-          transparent 5px, transparent 8px,
-          #fff 8px, #fff 11px,
-          transparent 11px, transparent 13px,
-          #fff 13px, #fff 14px,
-          transparent 14px, transparent 18px
+          #fff 0px,
+          #fff 2px,
+          transparent 2px,
+          transparent 4px,
+          #fff 4px,
+          #fff 5px,
+          transparent 5px,
+          transparent 8px,
+          #fff 8px,
+          #fff 11px,
+          transparent 11px,
+          transparent 13px,
+          #fff 13px,
+          #fff 14px,
+          transparent 14px,
+          transparent 18px
         );
         border-top: 2px solid #fff;
         border-bottom: 2px solid #fff;
-        opacity: .75;
+        opacity: 0.75;
         flex-shrink: 0;
       }
 
@@ -121,10 +137,15 @@
         font-weight: 500;
         touch-action: manipulation;
         cursor: pointer;
-        transition: opacity var(--t), background var(--t), transform .1s ease;
+        transition:
+          opacity var(--t),
+          background var(--t),
+          transform 0.1s ease;
       }
 
-      button:active { transform: scale(.96); }
+      button:active {
+        transform: scale(0.96);
+      }
 
       /* ── Camera controls ── */
       .camera-controls {
@@ -137,22 +158,28 @@
         flex: 3;
         background: var(--gradient);
         color: var(--gradient-text);
-        padding: 12px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 13px;
         font-weight: 600;
+        line-height: 1;
         border-radius: var(--r);
-        transition: filter var(--t), transform .1s ease;
+        transition:
+          filter var(--t),
+          transform 0.1s ease;
       }
 
-      .start-btn:hover { filter: brightness(1.35); }
+      .start-btn:hover {
+        filter: brightness(1.35);
+      }
 
       .stop-btn {
         flex: 1;
         background: #f0caca;
         color: var(--text-2);
-        padding: 12px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 13px;
         font-weight: 500;
+        line-height: 1;
         border-radius: var(--r);
       }
 
@@ -187,7 +214,9 @@
         color: var(--text-1);
         touch-action: manipulation;
         outline: none;
-        transition: border-color var(--t), box-shadow var(--t);
+        transition:
+          border-color var(--t),
+          box-shadow var(--t);
       }
 
       input:focus {
@@ -195,7 +224,9 @@
         box-shadow: 0 0 0 3px rgba(42, 22, 18, 0.14);
       }
 
-      input::placeholder { color: var(--text-3); }
+      input::placeholder {
+        color: var(--text-3);
+      }
 
       /* ── Table ── */
       table {
@@ -213,9 +244,10 @@
         color: var(--gradient-text);
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: .7px;
+        letter-spacing: 0.7px;
         text-transform: uppercase;
         padding: 9px 6px;
+        line-height: 1;
         border: none;
       }
 
@@ -228,15 +260,32 @@
         background: var(--surface);
       }
 
-      tr:last-child td { border-bottom: none; }
+      tr:last-child td {
+        border-bottom: none;
+      }
 
-      th.col-num, td.col-num { width: 32px; }
-      th.col-del, td.col-del { width: 40px; }
-      th.col-qty, td.col-qty { width: 150px; }
+      th.col-num,
+      td.col-num {
+        width: 32px;
+      }
+      th.col-del,
+      td.col-del {
+        width: 40px;
+      }
+      th.col-qty,
+      td.col-qty {
+        width: 150px;
+      }
 
       @media (max-width: 640px) {
-        th.col-del, td.col-del { display: none; }
-        .qty-btn { width: 24px; font-size: 14px; }
+        th.col-del,
+        td.col-del {
+          display: none;
+        }
+        .qty-btn {
+          width: 24px;
+          font-size: 14px;
+        }
       }
 
       /* ── Swipe delete reveal ── */
@@ -251,7 +300,7 @@
         justify-content: center;
         font-size: 11px;
         font-weight: 700;
-        letter-spacing: .4px;
+        letter-spacing: 0.4px;
         text-transform: uppercase;
         z-index: 500;
         cursor: pointer;
@@ -281,7 +330,9 @@
         border: 1px solid var(--border);
       }
 
-      .qty-btn:hover { background: var(--border); }
+      .qty-btn:hover {
+        background: var(--border);
+      }
 
       .qty-input {
         flex: 1;
@@ -302,7 +353,9 @@
         margin: 0;
       }
 
-      .qty-input[type="number"] { -moz-appearance: textfield; }
+      .qty-input[type="number"] {
+        -moz-appearance: textfield;
+      }
 
       /* ── Delete button ── */
       .delete-btn {
@@ -317,33 +370,58 @@
         border: 1px solid var(--danger-border);
       }
 
-      .delete-btn:hover { background: var(--danger); color: #fff; }
+      .delete-btn:hover {
+        background: var(--danger);
+        color: #fff;
+      }
 
       .delete-btn.confirm-delete {
         background: #7f1d1d;
         color: #fff;
-        animation: pulse .4s ease;
+        animation: pulse 0.4s ease;
       }
 
       @keyframes pulse {
-        0%   { transform: scale(1); }
-        50%  { transform: scale(1.2); }
-        100% { transform: scale(1); }
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
 
       /* ── Duplicate row highlights — theme-extracted colors ── */
       /* Group 1 — amber gold (warm, contrasts with crimson) */
-      .dup-group-1 td             { background: #fffbeb !important; }
-      .dup-group-1 td.col-num     { box-shadow: inset 3px 0 0 #d97706 !important; }
+      .dup-group-1 td {
+        background: #fffbeb !important;
+      }
+      .dup-group-1 td.col-num {
+        box-shadow: inset 3px 0 0 #d97706 !important;
+      }
       /* Group 2 — teal (cool contrast) */
-      .dup-group-2 td             { background: #f0fdfa !important; }
-      .dup-group-2 td.col-num     { box-shadow: inset 3px 0 0 #0d9488 !important; }
+      .dup-group-2 td {
+        background: #f0fdfa !important;
+      }
+      .dup-group-2 td.col-num {
+        box-shadow: inset 3px 0 0 #0d9488 !important;
+      }
       /* Group 3 — violet (adjacent, distinct) */
-      .dup-group-3 td             { background: #faf5ff !important; }
-      .dup-group-3 td.col-num     { box-shadow: inset 3px 0 0 #7c3aed !important; }
+      .dup-group-3 td {
+        background: #faf5ff !important;
+      }
+      .dup-group-3 td.col-num {
+        box-shadow: inset 3px 0 0 #7c3aed !important;
+      }
       /* Group 4 — deep rose (same family, darker shade) */
-      .dup-group-4 td             { background: #fdf2f8 !important; }
-      .dup-group-4 td.col-num     { box-shadow: inset 3px 0 0 #be185d !important; }
+      .dup-group-4 td {
+        background: #fdf2f8 !important;
+      }
+      .dup-group-4 td.col-num {
+        box-shadow: inset 3px 0 0 #be185d !important;
+      }
 
       /* Duplicate count badge injected next to SKU */
       .dup-badge {
@@ -355,13 +433,25 @@
         border-radius: 100px;
         margin-left: 5px;
         vertical-align: middle;
-        letter-spacing: .3px;
+        letter-spacing: 0.3px;
         line-height: 1.6;
       }
-      .dup-group-1 .dup-badge { background: #fef3c7; color: #92400e; }
-      .dup-group-2 .dup-badge { background: #ccfbf1; color: #115e59; }
-      .dup-group-3 .dup-badge { background: #ede9fe; color: #5b21b6; }
-      .dup-group-4 .dup-badge { background: #fce7f3; color: #9d174d; }
+      .dup-group-1 .dup-badge {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .dup-group-2 .dup-badge {
+        background: #ccfbf1;
+        color: #115e59;
+      }
+      .dup-group-3 .dup-badge {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
+      .dup-group-4 .dup-badge {
+        background: #fce7f3;
+        color: #9d174d;
+      }
 
       /* ── SKU description ── */
       .sku-desc {
@@ -387,6 +477,31 @@
         box-shadow: var(--shadow-lg);
       }
 
+      /* ── Suggestions backdrop ── */
+      #suggBackdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        z-index: 200;
+        pointer-events: none;
+        transition:
+          background 0.2s ease,
+          backdrop-filter 0.2s ease,
+          -webkit-backdrop-filter 0.2s ease;
+      }
+      #suggBackdrop.show {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        pointer-events: auto;
+      }
+      .scan-input-wrap {
+        position: relative;
+        z-index: 201;
+      }
+
       /* ── Suggestions dropdown ── */
       .suggestion-item {
         padding: 9px 12px;
@@ -396,11 +511,18 @@
         color: var(--text-1);
       }
 
-      .suggestion-item:hover { background: var(--surface-2); }
+      .suggestion-item:hover {
+        background: var(--surface-2);
+      }
 
       /* ── Missing item ── */
-      .missing-item  { background: #fff5f5 !important; }
-      .missing-text  { color: var(--danger); font-weight: 600; }
+      .missing-item {
+        background: #fff5f5 !important;
+      }
+      .missing-text {
+        color: var(--danger);
+        font-weight: 600;
+      }
 
       /* ── Search ── */
       .search-wrapper {
@@ -409,7 +531,10 @@
         margin-bottom: 10px;
       }
 
-      .search-wrapper input { width: 100%; padding-right: 36px; }
+      .search-wrapper input {
+        width: 100%;
+        padding-right: 36px;
+      }
 
       .clear-search-btn {
         position: absolute;
@@ -425,10 +550,17 @@
         padding: 4px;
       }
 
-      .clear-search-btn.active { color: var(--danger); }
+      .clear-search-btn.active {
+        color: var(--danger);
+      }
 
-      #clearScanBtn { color: var(--text-3); transition: color .1s; }
-      #clearScanBtn.active { color: var(--danger); }
+      #clearScanBtn {
+        color: var(--text-3);
+        transition: color 0.1s;
+      }
+      #clearScanBtn.active {
+        color: var(--danger);
+      }
 
       .search-bar {
         flex: 1;
@@ -454,7 +586,9 @@
         box-shadow: var(--shadow-xs);
       }
 
-      .restore-banner span { flex: 1; }
+      .restore-banner span {
+        flex: 1;
+      }
 
       .restore-banner .btn-restore {
         background: var(--gradient);
@@ -465,7 +599,9 @@
         font-weight: 600;
       }
 
-      .restore-banner .btn-restore:hover { filter: brightness(1.35); }
+      .restore-banner .btn-restore:hover {
+        filter: brightness(1.35);
+      }
 
       .restore-banner .btn-dismiss {
         background: transparent;
@@ -485,18 +621,26 @@
         border-radius: 50%;
         margin-left: 6px;
         flex-shrink: 0;
-        box-shadow: 0 0 0 0 rgba(239,68,68,.5);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
         animation: dotPulse 1.5s ease infinite;
         cursor: pointer;
         vertical-align: middle;
       }
 
-      #offlineDot.show { display: inline-block; }
+      #offlineDot.show {
+        display: inline-block;
+      }
 
       @keyframes dotPulse {
-        0%   { box-shadow: 0 0 0 0   rgba(239,68,68,.5); }
-        70%  { box-shadow: 0 0 0 5px rgba(239,68,68,0); }
-        100% { box-shadow: 0 0 0 0   rgba(239,68,68,0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 5px rgba(239, 68, 68, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+        }
       }
 
       /* ── Floating calculator ── */
@@ -514,16 +658,19 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 4px 18px rgba(155,42,42,.45);
+        box-shadow: 0 4px 18px rgba(155, 42, 42, 0.45);
         z-index: 9999;
         border: none;
-        transition: transform var(--t), filter var(--t), box-shadow var(--t);
+        transition:
+          transform var(--t),
+          filter var(--t),
+          box-shadow var(--t);
       }
 
       #calcBtn:hover {
         transform: scale(1.08);
         filter: brightness(1.3);
-        box-shadow: 0 6px 24px rgba(155,42,42,.6);
+        box-shadow: 0 6px 24px rgba(155, 42, 42, 0.6);
       }
 
       #calcBox {
@@ -533,7 +680,7 @@
         width: 264px;
         background: #f0caca;
         border-radius: var(--r-lg);
-        box-shadow: 0 16px 48px rgba(155,42,42,.25);
+        box-shadow: 0 16px 48px rgba(155, 42, 42, 0.25);
         padding: 14px;
         display: none;
         z-index: 9999;
@@ -546,7 +693,7 @@
         text-align: center;
         color: #1d1919;
         font-size: 10px;
-        letter-spacing: .8px;
+        letter-spacing: 0.8px;
         text-transform: uppercase;
       }
 
@@ -590,10 +737,14 @@
         font-weight: 500;
         font-family: var(--font);
         border: 1px solid #3d2020;
-        transition: filter var(--t), transform .1s ease;
+        transition:
+          filter var(--t),
+          transform 0.1s ease;
       }
 
-      #calcKeys button:hover { filter: brightness(1.4); }
+      #calcKeys button:hover {
+        filter: brightness(1.4);
+      }
 
       #calcKeys button.op {
         background: #5a1e1e;
@@ -610,7 +761,9 @@
       }
 
       /* ── Camera overlay ── */
-      .camera-wrapper { position: relative; }
+      .camera-wrapper {
+        position: relative;
+      }
 
       .scan-overlay {
         position: absolute;
@@ -624,7 +777,7 @@
       .scan-box {
         width: 80%;
         height: 60%;
-        border: 2px solid rgba(255,255,255,.75);
+        border: 2px solid rgba(255, 255, 255, 0.75);
         border-radius: 10px;
         position: relative;
         overflow: visible;
@@ -632,11 +785,13 @@
 
       .scan-line {
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 2px;
         background: var(--danger);
         animation: scanMove 2s linear infinite;
-        transition: background .2s ease;
+        transition: background 0.2s ease;
       }
 
       .scan-line.flash {
@@ -650,41 +805,50 @@
         z-index: 1000;
         background: var(--bg);
         padding-bottom: 6px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       }
 
       #scanFlash {
         position: absolute;
         inset: 0;
-        background: rgba(0,255,136,.35);
+        background: rgba(0, 255, 136, 0.35);
         opacity: 0;
         pointer-events: none;
         border-radius: var(--r);
       }
 
-      #scanFlash.active { animation: flashFade .25s ease; }
-      #scanFlash.error  { background: rgba(255,0,0,.35); }
+      #scanFlash.active {
+        animation: flashFade 0.25s ease;
+      }
+      #scanFlash.error {
+        background: rgba(255, 0, 0, 0.35);
+      }
 
       #scanMessage {
         position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         font-weight: 900;
         font-size: 28px;
         color: var(--danger);
         opacity: 0;
-        transition: opacity .15s ease;
+        transition: opacity 0.15s ease;
         z-index: 9999;
         pointer-events: none;
         text-align: center;
         white-space: nowrap;
-        text-shadow: 0 0 10px rgba(0,0,0,.8);
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         letter-spacing: 1px;
         font-family: var(--font);
       }
 
-      #scanMessage.show    { opacity: 1; }
-      #scanMessage.success { color: #00ff88; }
+      #scanMessage.show {
+        opacity: 1;
+      }
+      #scanMessage.success {
+        color: #00ff88;
+      }
 
       /* ── Undo toast ── */
       #undoToast {
@@ -715,7 +879,9 @@
         font-weight: 600;
       }
 
-      #undoToast button:hover { filter: brightness(1.35); }
+      #undoToast button:hover {
+        filter: brightness(1.35);
+      }
 
       /* ── Loading bar ── */
       #loadingBar {
@@ -737,8 +903,12 @@
       }
 
       @keyframes loadingSlide {
-        0%   { transform: translateX(-100%); }
-        100% { transform: translateX(350%); }
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(350%);
+        }
       }
 
       /* ── History panel ── */
@@ -750,12 +920,12 @@
         align-items: flex-end;
         justify-content: center;
         pointer-events: none;
-        background: rgba(0,0,0,0);
-        transition: background .3s ease;
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.3s ease;
       }
 
       #historyPanel.open {
-        background: rgba(0,0,0,.55);
+        background: rgba(0, 0, 0, 0.55);
         pointer-events: auto;
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
@@ -770,10 +940,11 @@
         height: 75vh;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 -4px 32px rgba(0,0,0,.15);
+        box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.15);
         transform: translateY(100%);
-        transition: transform .35s cubic-bezier(0.32, 0.72, 0, 1),
-                    height .3s cubic-bezier(0.32, 0.72, 0, 1);
+        transition:
+          transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+          height 0.3s cubic-bezier(0.32, 0.72, 0, 1);
         overflow: hidden;
         will-change: transform;
       }
@@ -834,9 +1005,16 @@
         transition: background var(--t);
       }
 
-      #historyBox h3 span:hover { background: var(--border); color: var(--text-1); }
+      #historyBox h3 span:hover {
+        background: var(--border);
+        color: var(--text-1);
+      }
 
-      #historyList { overflow-y: auto; flex: 1; padding-bottom: 8px; }
+      #historyList {
+        overflow-y: auto;
+        flex: 1;
+        padding-bottom: 8px;
+      }
 
       .history-item {
         border: 1.5px solid var(--border);
@@ -851,7 +1029,9 @@
         transition: border-color var(--t);
       }
 
-      .history-item:hover { border-color: var(--primary); }
+      .history-item:hover {
+        border-color: var(--primary);
+      }
 
       .history-meta {
         font-size: 12px;
@@ -868,7 +1048,10 @@
         margin-bottom: 1px;
       }
 
-      .history-actions { display: flex; gap: 6px; }
+      .history-actions {
+        display: flex;
+        gap: 6px;
+      }
 
       .history-actions button {
         padding: 6px 10px;
@@ -879,14 +1062,33 @@
       }
 
       /* Re-import — dark neutral, same feel as history button */
-      .btn-reimport           { background: var(--surface-2); color: var(--text-2) !important; border: 1px solid var(--border); }
-      .btn-reimport:hover     { background: #3d2020; }
+      .btn-reimport {
+        background: var(--surface-2);
+        color: var(--text-2) !important;
+        border: 1px solid var(--border);
+      }
+      .btn-reimport:hover {
+        background: #3d2020;
+      }
       /* Re-export — gradient primary */
-      .btn-reexport           { background: var(--gradient); color: var(--gradient-text); }
-      .btn-reexport:hover     { filter: brightness(1.35); }
+      .btn-reexport {
+        background: var(--gradient);
+        color: var(--gradient-text);
+      }
+      .btn-reexport:hover {
+        filter: brightness(1.35);
+      }
       /* Delete — white bg, bright red border so trash icon is always visible */
-      .btn-del-hist           { background: #ffffff; color: #dc2626; border: 1.5px solid #dc2626; font-size: 14px; }
-      .btn-del-hist:hover     { background: #dc2626; color: #ffffff; }
+      .btn-del-hist {
+        background: #ffffff;
+        color: #dc2626;
+        border: 1.5px solid #dc2626;
+        font-size: 14px;
+      }
+      .btn-del-hist:hover {
+        background: #dc2626;
+        color: #ffffff;
+      }
 
       #historyEmpty {
         text-align: center;
@@ -912,217 +1114,252 @@
         height: 34px;
         font-size: 16px;
         border-radius: 10px;
-        background: rgba(255,255,255,.15);
+        background: rgba(255, 255, 255, 0.15);
         color: white;
-        border: 1.5px solid rgba(255,255,255,.35);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background .15s ease, transform .1s ease;
+        transition:
+          background 0.15s ease,
+          transform 0.1s ease;
       }
 
-      #zoomControls button:active { background: rgba(255,255,255,.3); transform: scale(.9); }
+      #zoomControls button:active {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0.9);
+      }
 
       /* ── Torch ── */
       #torchBtn {
-        width: 34px; height: 34px;
+        width: 34px;
+        height: 34px;
         font-size: 16px;
         border-radius: 10px;
-        background: rgba(255,255,255,.15);
+        background: rgba(255, 255, 255, 0.15);
         color: white;
-        border: 1.5px solid rgba(255,255,255,.35);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         display: none;
         align-items: center;
         justify-content: center;
-        transition: background .15s ease, transform .1s ease;
+        transition:
+          background 0.15s ease,
+          transform 0.1s ease;
       }
 
       #torchBtn.torch-on {
-        background: rgba(251,191,36,.45);
-        border-color: rgba(251,191,36,.8);
+        background: rgba(251, 191, 36, 0.45);
+        border-color: rgba(251, 191, 36, 0.8);
       }
 
-      #torchBtn:active { transform: scale(.9); }
+      #torchBtn:active {
+        transform: scale(0.9);
+      }
 
       #zoomLabel {
         color: white;
         font-size: 10px;
         font-weight: 700;
         text-align: center;
-        background: rgba(0,0,0,.5);
+        background: rgba(0, 0, 0, 0.5);
         border-radius: var(--r-sm);
         padding: 2px 6px;
         opacity: 0;
-        transition: opacity .3s ease;
+        transition: opacity 0.3s ease;
         white-space: nowrap;
         backdrop-filter: blur(4px);
-        letter-spacing: .5px;
+        letter-spacing: 0.5px;
       }
 
-      #zoomLabel.show { opacity: 1; }
+      #zoomLabel.show {
+        opacity: 1;
+      }
 
       /* ── Camera loading overlay ── */
-      .scan-overlay.loading .scan-box { display: none; }
+      .scan-overlay.loading .scan-box {
+        display: none;
+      }
 
       .scan-overlay.loading::after {
         content: "";
-        width: 34px; height: 34px;
-        border: 3px solid rgba(255,255,255,.25);
+        width: 34px;
+        height: 34px;
+        border: 3px solid rgba(255, 255, 255, 0.25);
         border-top-color: white;
         border-radius: 50%;
-        animation: spin .8s linear infinite;
+        animation: spin 0.8s linear infinite;
         position: absolute;
         top: calc(50% - 17px);
         left: calc(50% - 17px);
       }
 
       .scan-overlay.loading {
-        background: rgba(0,0,0,.45);
+        background: rgba(0, 0, 0, 0.45);
         border-radius: var(--r);
       }
 
-      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
       /* ── Row animations ── */
-      .delete-row { animation: rowDelete .18s ease-in forwards; }
-      .new-row    { animation: rowAdd .4s ease-out; }
+      .delete-row {
+        animation: rowDelete 0.18s ease-in forwards;
+      }
+      .new-row {
+        animation: rowAdd 0.4s ease-out;
+      }
 
       /* ── Top bar ── */
       .top-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 10px;
-        gap: 8px;
         background: var(--surface);
         border-radius: var(--r);
-        padding: 8px 12px;
+        padding: 6px 8px;
         box-shadow: var(--shadow-sm);
         border: 1.5px solid var(--border);
       }
 
-      .counts-left {
-        font-weight: 600;
-        font-size: 13px;
+      /* ── Action buttons row ── */
+      .action-bar {
         display: flex;
-        flex-direction: column;
-        gap: 2px;
-        color: var(--text-1);
+        gap: 6px;
       }
-
-      .counts-row {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      .actions-right { display: flex; gap: 6px; position: relative; }
-
-      .actions-right button {
+      .action-bar button {
+        flex: 1;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 5px;
-        width: auto !important;
-        padding: 7px 11px;
+        gap: 4px;
+        padding: 7px 4px;
         font-size: 12px;
+        font-weight: 600;
         border-radius: var(--r-sm);
         white-space: nowrap;
         line-height: 1;
+        cursor: pointer;
+      }
+      .action-bar .btn-history {
+        background: var(--surface-2);
+        color: var(--text-2);
+        border: 1px solid var(--border);
+      }
+      .action-bar .btn-history:active {
+        background: var(--border);
+      }
+      .action-bar .btn-export {
+        background: var(--surface-2);
+        color: var(--text-2);
+        border: 1px solid var(--border);
+      }
+      .action-bar .btn-export:active {
+        background: var(--border);
+      }
+      .action-bar .btn-import {
+        background: var(--surface-2);
+        color: var(--text-2);
+        border: 1px solid var(--border);
+      }
+      .action-bar .btn-import:active {
+        background: var(--border);
+      }
+      .action-bar .btn-clear {
+        background: var(--danger-light);
+        color: var(--danger);
+        border: 1px solid var(--danger-border);
+      }
+      .action-bar .btn-clear:active {
+        background: var(--danger);
+        color: #fff;
+      }
+
+      /* ── Stats row ── */
+      .stats-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 7px;
+        font-size: 11px;
         font-weight: 600;
+        color: var(--text-2);
       }
-
-      button.small {
-        padding: 6px 11px;
-        font-size: 12px;
-        border-radius: var(--r-sm);
-        font-weight: 600;
+      .stats-bar .stat-sep {
+        color: var(--border-strong);
+        font-weight: 400;
       }
-
-      .export-btn.small   { background: var(--gradient); color: var(--gradient-text); transition: filter var(--t), transform .1s ease; }
-      .export-btn.small:hover { filter: brightness(1.35); }
-
-      .clear-btn.small    { background: var(--danger-light); color: var(--danger); border: 1px solid var(--danger-border); }
-      .clear-btn.small:hover { background: var(--danger); color: white; }
-
-      .history-btn.small  { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
-      .history-btn.small:hover { background: var(--border); }
-
-      /* ── Settings button & dropdown ── */
-      .settings-btn.small {
-        background: var(--gradient);
-        color: var(--gradient-text);
-        transition: filter var(--t), transform .1s ease;
-        letter-spacing: .2px;
+      .stats-bar .stat-not-found {
+        color: var(--text-3);
       }
-      .settings-btn.small:hover { filter: brightness(1.35); }
-
-      .settings-menu {
-        position: absolute;
-        right: 0;
-        top: calc(100% + 8px);
-        background: var(--surface);
-        border-radius: var(--r);
-        box-shadow: var(--shadow-lg);
-        border: 1.5px solid var(--border);
-        z-index: 10000;
-        min-width: 180px;
-        display: none;
-        overflow: hidden;
+      .stats-bar .stat-not-found.has-missing {
+        color: var(--danger);
       }
-      .settings-menu.open { display: block; }
-      .settings-menu button {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        width: 100% !important;
-        text-align: left !important;
-        padding: 13px 16px !important;
-        font-size: 14px !important;
-        background: transparent !important;
-        border: none !important;
-        border-bottom: 1px solid var(--border) !important;
-        color: var(--text-1) !important;
-        font-weight: 500 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        transform: none !important;
-        justify-content: flex-start !important;
-        white-space: nowrap !important;
+      .stats-bar #saveStatus {
+        font-size: 11px;
+        margin-left: 4px;
       }
-      .settings-menu button:last-child { border-bottom: none !important; }
-      .settings-menu button:hover { background: var(--surface-2) !important; }
-      .settings-menu button:active { transform: none !important; background: var(--border) !important; }
-      .settings-menu button.danger-item { color: var(--danger) !important; }
 
       /* ── Animations ── */
       @keyframes flashFade {
-        0%   { opacity: .85; }
-        100% { opacity: 0; }
+        0% {
+          opacity: 0.85;
+        }
+        100% {
+          opacity: 0;
+        }
       }
 
       @keyframes scanMove {
-        0%   { top: 0; }
-        100% { top: 100%; }
+        0% {
+          top: 0;
+        }
+        100% {
+          top: 100%;
+        }
       }
 
       @keyframes rowAdd {
-        from { transform: translateY(-8px); background-color: #fdf0e8; opacity: 0; }
-        to   { transform: translateY(0);    background-color: transparent; opacity: 1; }
+        from {
+          transform: translateY(-8px);
+          background-color: #fdf0e8;
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          background-color: transparent;
+          opacity: 1;
+        }
       }
 
       @keyframes rowDelete {
-        from { transform: translateX(0);     opacity: 1; background-color: var(--danger-light); }
-        to   { transform: translateX(-16px); opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; }
+        from {
+          transform: translateX(0);
+          opacity: 1;
+          background-color: var(--danger-light);
+        }
+        to {
+          transform: translateX(-16px);
+          opacity: 0;
+          height: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
       }
 
       /* ── Flagged-deleted rows ── */
-      tr.flagged-deleted { opacity: .55; }
-      tr.flagged-deleted .sku-id { text-decoration: line-through; color: var(--text-3); }
+      tr.flagged-deleted {
+        opacity: 0.55;
+      }
+      tr.flagged-deleted .sku-id {
+        text-decoration: line-through;
+        color: var(--text-3);
+      }
 
       .deleted-flag {
         display: inline-block;
@@ -1134,19 +1371,23 @@
         margin-left: 4px;
         vertical-align: middle;
         font-weight: 700;
-        letter-spacing: .3px;
+        letter-spacing: 0.3px;
         text-transform: uppercase;
       }
 
       /* ── Swipe row cell transitions ── */
-      tr.swiping td { transition: none; }
-      tr td { transition: transform .2s ease; }
+      tr.swiping td {
+        transition: none;
+      }
+      tr td {
+        transition: transform 0.2s ease;
+      }
 
       /* ── Custom modal ── */
       #customModal {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,.55);
+        background: rgba(0, 0, 0, 0.55);
         z-index: 40000;
         display: none;
         align-items: center;
@@ -1156,7 +1397,9 @@
         -webkit-backdrop-filter: blur(4px);
       }
 
-      #customModal.open { display: flex; }
+      #customModal.open {
+        display: flex;
+      }
 
       #customModalBox {
         background: var(--surface);
@@ -1176,7 +1419,10 @@
         font-weight: 500;
       }
 
-      #customModalInput { display: none; margin-bottom: 14px; }
+      #customModalInput {
+        display: none;
+        margin-bottom: 14px;
+      }
 
       #customModalInput input {
         width: 100%;
@@ -1189,7 +1435,11 @@
         font-family: var(--font);
       }
 
-      #customModalBtns { display: flex; flex-direction: column; gap: 8px; }
+      #customModalBtns {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
       #customModalBtns button {
         padding: 12px;
@@ -1203,7 +1453,7 @@
       #reimportModal {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,.55);
+        background: rgba(0, 0, 0, 0.55);
         z-index: 30000;
         display: none;
         align-items: center;
@@ -1213,7 +1463,9 @@
         -webkit-backdrop-filter: blur(4px);
       }
 
-      #reimportModal.open { display: flex; }
+      #reimportModal.open {
+        display: flex;
+      }
 
       #reimportBox {
         background: var(--surface);
@@ -1232,7 +1484,11 @@
         font-weight: 500;
       }
 
-      #reimportBox .modal-btns { display: flex; flex-direction: column; gap: 8px; }
+      #reimportBox .modal-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
       #reimportBox .modal-btns button {
         padding: 12px;
@@ -1242,12 +1498,28 @@
         font-weight: 600;
       }
 
-      #reimportAddBtn    { background: var(--gradient); color: var(--gradient-text); }
-      #reimportAddBtn:hover { filter: brightness(1.35); }
-      #reimportReplaceBtn { background: var(--danger); color: white; }
-      #reimportReplaceBtn:hover { background: var(--danger-hover); }
-      #reimportCancelBtn { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border-strong); }
-      #reimportCancelBtn:hover { background: var(--border); }
+      #reimportAddBtn {
+        background: var(--gradient);
+        color: var(--gradient-text);
+      }
+      #reimportAddBtn:hover {
+        filter: brightness(1.35);
+      }
+      #reimportReplaceBtn {
+        background: var(--danger);
+        color: white;
+      }
+      #reimportReplaceBtn:hover {
+        background: var(--danger-hover);
+      }
+      #reimportCancelBtn {
+        background: var(--surface-2);
+        color: var(--text-2);
+        border: 1px solid var(--border-strong);
+      }
+      #reimportCancelBtn:hover {
+        background: var(--border);
+      }
 
       /* ── Status badges ── */
       .badge {
@@ -1256,15 +1528,30 @@
         border-radius: 100px;
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: .3px;
+        letter-spacing: 0.3px;
         text-transform: uppercase;
       }
 
-      .badge-draft      { background: #fef3c7; color: #92400e; }
-      .badge-exported   { background: #d1fae5; color: #065f46; }
-      .badge-closed     { background: #f1f5f9; color: #475569; }
-      .badge-imported   { background: #dbeafe; color: #1e40af; }
-      .badge-reimported { background: #ede9fe; color: #5b21b6; }
+      .badge-draft {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .badge-exported {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .badge-closed {
+        background: #f1f5f9;
+        color: #475569;
+      }
+      .badge-imported {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+      .badge-reimported {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
 
       /* ── Update banner ── */
       #updateBanner {
@@ -1282,16 +1569,20 @@
         box-shadow: var(--shadow-sm);
         cursor: pointer;
       }
-      #updateBanner.show { display: flex; }
-      #updateBanner span { flex: 1; }
+      #updateBanner.show {
+        display: flex;
+      }
+      #updateBanner span {
+        flex: 1;
+      }
       #updateBanner button {
-        background: rgba(255,255,255,.2);
+        background: rgba(255, 255, 255, 0.2);
         color: var(--gradient-text);
         padding: 5px 12px;
         border-radius: var(--r-sm);
         font-size: 12px;
         font-weight: 700;
-        border: 1px solid rgba(255,255,255,.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         white-space: nowrap;
       }
 
@@ -1307,7 +1598,9 @@
         margin-left: 4px;
         vertical-align: middle;
       }
-      #sessionWarnBadge.show { display: inline; }
+      #sessionWarnBadge.show {
+        display: inline;
+      }
 
       /* ── Empty state ── */
       #emptyState {
@@ -1320,8 +1613,12 @@
         color: var(--text-3);
         text-align: center;
       }
-      #emptyState.show { display: flex; }
-      #emptyState svg { opacity: .35; }
+      #emptyState.show {
+        display: flex;
+      }
+      #emptyState svg {
+        opacity: 0.35;
+      }
       #emptyState p {
         font-size: 14px;
         font-weight: 600;
@@ -1338,7 +1635,7 @@
       #saveStatus {
         font-size: 11px;
         font-weight: 500;
-        transition: color .3s;
+        transition: color 0.3s;
       }
 
       /* ── Counts display ── */
@@ -1361,14 +1658,23 @@
       <div id="updateBanner">
         <span>🔄 Update available</span>
         <button onclick="location.reload()">Refresh</button>
-        <button onclick="document.getElementById('updateBanner').classList.remove('show')" style="background:transparent;border:none;color:var(--gradient-text);font-size:16px;padding:4px 6px;">✕</button>
+        <button
+          onclick="
+            document.getElementById('updateBanner').classList.remove('show')
+          "
+          style="
+            background: transparent;
+            border: none;
+            color: var(--gradient-text);
+            font-size: 16px;
+            padding: 4px 6px;
+          "
+        >
+          ✕
+        </button>
       </div>
 
-      <div
-        id="restoreBanner"
-        class="restore-banner"
-        style="display: none;"
-      >
+      <div id="restoreBanner" class="restore-banner" style="display: none">
         <span>⚠ Unsaved session found. Restore?</span>
         <button class="btn-restore" onclick="restoreBackup()">Restore</button>
         <button class="btn-dismiss" onclick="dismissRestore()">Dismiss</button>
@@ -1407,20 +1713,36 @@
         </div>
       </div>
 
+      <div id="suggBackdrop"></div>
+
       <div class="inputs">
-        <div style="position: relative">
+        <div class="scan-input-wrap">
           <input
             id="scanInput"
             type="text"
             placeholder="Scan or enter barcode"
-            style="width: 100%; padding-right: 36px;"
+            style="width: 100%; padding-right: 36px"
             autocomplete="off"
           />
           <span
             id="clearScanBtn"
             onclick="clearScanInput()"
-            style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:17px;cursor:pointer;user-select:none;-webkit-user-select:none;display:none;line-height:1;z-index:2;padding:4px;"
-          >✕</span>
+            style="
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 17px;
+              cursor: pointer;
+              user-select: none;
+              -webkit-user-select: none;
+              display: none;
+              line-height: 1;
+              z-index: 2;
+              padding: 4px;
+            "
+            >✕</span
+          >
           <div
             id="productSuggestions"
             style="
@@ -1441,27 +1763,35 @@
           ></div>
         </div>
       </div>
-      <input type="file" id="importFileInput" accept=".csv" style="display:none">
+      <input
+        type="file"
+        id="importFileInput"
+        accept=".csv"
+        style="display: none"
+      />
 
       <div class="top-bar">
-        <div class="counts-left">
-          <div class="counts-row">
-            <span id="counts">Unique SKUs: 0</span>
-            <span
-              id="offlineDot"
-              title="Products failed to load — scanning blind!"
-            ></span>
-          </div>
+        <div class="action-bar">
+          <button class="btn-export" onclick="exportCSV()">📤 Export</button>
+          <button class="btn-import" onclick="triggerImport()">
+            📂 Import
+          </button>
+          <button class="btn-history" onclick="openHistory()">
+            🕓 History<span id="sessionWarnBadge">⚠</span>
+          </button>
+          <button class="btn-clear" onclick="clearAll()">🗑 Clear</button>
         </div>
-        <div id="saveStatus"></div>
-        <div class="actions-right" id="actionsRight">
-          <button class="settings-btn small" id="settingsBtn" onclick="toggleSettingsMenu(event)">⚙ Menu</button>
-          <div class="settings-menu" id="settingsMenu">
-            <button onclick="openHistory(); closeSettingsMenu()">🕓 History<span id="sessionWarnBadge">⚠</span></button>
-            <button onclick="exportCSV(); closeSettingsMenu()">📤 Export</button>
-            <button onclick="triggerImport()">📂 Import</button>
-            <button class="danger-item" onclick="clearAll(); closeSettingsMenu()">🗑 Clear</button>
-          </div>
+        <div class="stats-bar">
+          <span id="statEntries">Total Entries: 0</span>
+          <span class="stat-sep">|</span>
+          <span id="statSkus">Unique SKUs: 0</span>
+          <span class="stat-sep">|</span>
+          <span id="statNotFound" class="stat-not-found">Not Found: 0</span>
+          <span
+            id="offlineDot"
+            title="Products failed to load — scanning blind!"
+          ></span>
+          <span id="saveStatus"></span>
         </div>
       </div>
 
@@ -1477,7 +1807,7 @@
 
       <table>
         <thead>
-          <tr style="background: linear-gradient(140deg, #1d1919, #741f1f);;">
+          <tr style="background: linear-gradient(140deg, #1d1919, #741f1f)">
             <th class="col-num">#</th>
             <th>SKU</th>
             <th class="col-qty">Qty</th>
@@ -1488,16 +1818,34 @@
       </table>
 
       <div id="emptyState">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="44" height="36" rx="6" stroke="#a07070" stroke-width="2.5" fill="none"/>
-          <rect x="10" y="14" width="5" height="24" rx="1.5" fill="#a07070"/>
-          <rect x="18" y="14" width="2.5" height="24" rx="1.5" fill="#a07070"/>
-          <rect x="23" y="14" width="7" height="24" rx="1.5" fill="#a07070"/>
-          <rect x="33" y="14" width="2.5" height="24" rx="1.5" fill="#a07070"/>
-          <rect x="38" y="14" width="4" height="24" rx="1.5" fill="#a07070"/>
+        <svg
+          width="52"
+          height="52"
+          viewBox="0 0 52 52"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="4"
+            y="8"
+            width="44"
+            height="36"
+            rx="6"
+            stroke="#a07070"
+            stroke-width="2.5"
+            fill="none"
+          />
+          <rect x="10" y="14" width="5" height="24" rx="1.5" fill="#a07070" />
+          <rect x="18" y="14" width="2.5" height="24" rx="1.5" fill="#a07070" />
+          <rect x="23" y="14" width="7" height="24" rx="1.5" fill="#a07070" />
+          <rect x="33" y="14" width="2.5" height="24" rx="1.5" fill="#a07070" />
+          <rect x="38" y="14" width="4" height="24" rx="1.5" fill="#a07070" />
         </svg>
         <p>Nothing scanned yet</p>
-        <small>Start camera to scan barcodes,<br>or use ⚙ Menu → Import to load a list.</small>
+        <small
+          >Start camera to scan barcodes,<br />or use ⚙ Menu → Import to load a
+          list.</small
+        >
       </div>
     </div>
 
@@ -1523,15 +1871,9 @@
       <div id="reimportBox">
         <p id="reimportMsg"></p>
         <div class="modal-btns">
-          <button id="reimportAddBtn">
-            Add to existing list
-          </button>
-          <button id="reimportReplaceBtn">
-            Replace current list
-          </button>
-          <button id="reimportCancelBtn">
-            Cancel
-          </button>
+          <button id="reimportAddBtn">Add to existing list</button>
+          <button id="reimportReplaceBtn">Replace current list</button>
+          <button id="reimportCancelBtn">Cancel</button>
         </div>
       </div>
     </div>
@@ -1574,7 +1916,8 @@
 
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./sw.js")
+        navigator.serviceWorker
+          .register("./sw.js")
           .then((reg) => {
             // Poll for updates every 60s (GitHub Pages deployments)
             setInterval(() => reg.update(), 60000);
@@ -1594,7 +1937,6 @@
       const video = document.getElementById("video");
       const scanInput = document.getElementById("scanInput");
       const tableBody = document.getElementById("tableBody");
-      const countsDiv = document.getElementById("counts");
       const stopBtn = document.querySelector(".stop-btn");
       const searchInput = document.getElementById("searchInput");
       const clearSearchBtn = document.querySelector(".clear-search-btn");
@@ -1619,7 +1961,7 @@
       let activeSession = null;
 
       /* ─── Custom modal helpers ───────────────────────────── */
-      function _modal({ msg, inputDefault, buttons }) {
+      function _modal({ msg, inputDefault, buttons, danger }) {
         return new Promise((resolve) => {
           const modal = document.getElementById("customModal");
           const msgEl = document.getElementById("customModalMsg");
@@ -1628,6 +1970,7 @@
           const btnsEl = document.getElementById("customModalBtns");
 
           msgEl.textContent = msg;
+          msgEl.style.color = danger ? "var(--danger)" : "var(--text-1)";
           btnsEl.innerHTML = "";
 
           if (inputDefault !== undefined) {
@@ -1673,9 +2016,7 @@
       function showAlert(msg) {
         return _modal({
           msg,
-          buttons: [
-            { label: "OK", bg: GRAD, color: "#f5ede6", value: null },
-          ],
+          buttons: [{ label: "OK", bg: GRAD, color: "#f5ede6", value: null }],
         });
       }
 
@@ -1684,7 +2025,28 @@
           msg,
           buttons: [
             { label: okLabel, bg: GRAD, color: "#f5ede6", value: true },
-            { label: cancelLabel, bg: "#f0ebe5", color: "#5a4a40", value: false },
+            {
+              label: cancelLabel,
+              bg: "#f0ebe5",
+              color: "#5a4a40",
+              value: false,
+            },
+          ],
+        });
+      }
+
+      function showDangerConfirm(msg, okLabel = "OK", cancelLabel = "Cancel") {
+        return _modal({
+          msg,
+          danger: true,
+          buttons: [
+            { label: okLabel, bg: "var(--danger)", color: "#fff", value: true },
+            {
+              label: cancelLabel,
+              bg: "#f0ebe5",
+              color: "#5a4a40",
+              value: false,
+            },
           ],
         });
       }
@@ -1865,36 +2227,47 @@
         document.removeEventListener("touchstart", _unlockAudio, true);
         document.removeEventListener("mousedown", _unlockAudio, true);
       }
-      document.addEventListener("touchstart", _unlockAudio, { passive: true, capture: true });
-      document.addEventListener("mousedown",  _unlockAudio, { passive: true, capture: true });
+      document.addEventListener("touchstart", _unlockAudio, {
+        passive: true,
+        capture: true,
+      });
+      document.addEventListener("mousedown", _unlockAudio, {
+        passive: true,
+        capture: true,
+      });
 
       function playBeep(type = "ok") {
         try {
           const ctx = _getAudioCtx();
-          const resume = ctx.state === "suspended" ? ctx.resume() : Promise.resolve();
-          resume.then(() => {
-            const o = ctx.createOscillator(), g = ctx.createGain();
-            o.connect(g);
-            g.connect(ctx.destination);
-            if (type === "error") {
-              o.frequency.value = 1000;
-              g.gain.value = 0.3;
-              o.start();
-              o.stop(ctx.currentTime + 0.2);
-              const o2 = ctx.createOscillator(), g2 = ctx.createGain();
-              o2.frequency.value = 1000;
-              g2.gain.value = 0.3;
-              o2.connect(g2);
-              g2.connect(ctx.destination);
-              o2.start(ctx.currentTime + 0.22);
-              o2.stop(ctx.currentTime + 0.4);
-            } else {
-              o.frequency.value = 2000;
-              g.gain.value = 0.2;
-              o.start();
-              o.stop(ctx.currentTime + 0.1);
-            }
-          }).catch(() => {});
+          const resume =
+            ctx.state === "suspended" ? ctx.resume() : Promise.resolve();
+          resume
+            .then(() => {
+              const o = ctx.createOscillator(),
+                g = ctx.createGain();
+              o.connect(g);
+              g.connect(ctx.destination);
+              if (type === "error") {
+                o.frequency.value = 1000;
+                g.gain.value = 0.3;
+                o.start();
+                o.stop(ctx.currentTime + 0.2);
+                const o2 = ctx.createOscillator(),
+                  g2 = ctx.createGain();
+                o2.frequency.value = 1000;
+                g2.gain.value = 0.3;
+                o2.connect(g2);
+                g2.connect(ctx.destination);
+                o2.start(ctx.currentTime + 0.22);
+                o2.stop(ctx.currentTime + 0.4);
+              } else {
+                o.frequency.value = 2000;
+                g.gain.value = 0.2;
+                o.start();
+                o.stop(ctx.currentTime + 0.1);
+              }
+            })
+            .catch(() => {});
         } catch (e) {}
       }
 
@@ -2102,11 +2475,15 @@
 
       // Also hide instantly when the visual viewport resizes (keyboard open/close on iOS)
       if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", () => {
-          if (_revealedTr && _revealedTr._hideImmediate) {
-            _revealedTr._hideImmediate();
-          }
-        }, { passive: true });
+        window.visualViewport.addEventListener(
+          "resize",
+          () => {
+            if (_revealedTr && _revealedTr._hideImmediate) {
+              _revealedTr._hideImmediate();
+            }
+          },
+          { passive: true },
+        );
       }
 
       function attachSwipe(tr) {
@@ -2137,9 +2514,9 @@
         function updateBtnPos() {
           if (!revealBtn) return;
           const r = tr.getBoundingClientRect();
-          revealBtn.style.top    = r.top + "px";
+          revealBtn.style.top = r.top + "px";
           revealBtn.style.height = r.height + "px";
-          revealBtn.style.left   = (r.right - DELETE_W) + "px";
+          revealBtn.style.left = r.right - DELETE_W + "px";
         }
 
         function destroyRevealBtn(animate) {
@@ -2159,8 +2536,14 @@
             scrollListener = null;
           }
           if (resizeListener) {
-            (window.visualViewport || window).removeEventListener("resize", resizeListener);
-            (window.visualViewport || window).removeEventListener("scroll", resizeListener);
+            (window.visualViewport || window).removeEventListener(
+              "resize",
+              resizeListener,
+            );
+            (window.visualViewport || window).removeEventListener(
+              "scroll",
+              resizeListener,
+            );
             resizeListener = null;
           }
           _revealBtn = null;
@@ -2218,7 +2601,9 @@
               });
 
               scrollListener = () => updateBtnPos();
-              window.addEventListener("scroll", scrollListener, { passive: true });
+              window.addEventListener("scroll", scrollListener, {
+                passive: true,
+              });
 
               resizeListener = () => updateBtnPos();
               const vv = window.visualViewport || window;
@@ -2300,7 +2685,7 @@
 
       /* ─── Add row ────────────────────────────────────────── */
       function addRowFast(barcode, qty, flagDeleted = false) {
-        document.getElementById("productSuggestions").style.display = "none";
+        hideSuggBox();
         scanInput.value = "";
         const _clrBtn = document.getElementById("clearScanBtn");
         if (_clrBtn) _clrBtn.style.display = "none";
@@ -2351,12 +2736,16 @@
           const ttH = tooltip.offsetHeight;
           const ttW = tooltip.offsetWidth;
           const spaceBelow = window.innerHeight - rect.bottom;
-          const top = spaceBelow < ttH + 16
-            ? Math.max(6, rect.top - ttH - 6)
-            : rect.bottom + 6;
-          const left = Math.max(6, Math.min(rect.left, window.innerWidth - ttW - 6));
+          const top =
+            spaceBelow < ttH + 16
+              ? Math.max(6, rect.top - ttH - 6)
+              : rect.bottom + 6;
+          const left = Math.max(
+            6,
+            Math.min(rect.left, window.innerWidth - ttW - 6),
+          );
           tooltip.style.left = left + "px";
-          tooltip.style.top  = top  + "px";
+          tooltip.style.top = top + "px";
           setTimeout(
             () =>
               document.addEventListener("click", () => tooltip.remove(), {
@@ -2531,12 +2920,23 @@
 
       function clearScanInput() {
         scanInput.value = "";
-        document.getElementById("productSuggestions").style.display = "none";
+        hideSuggBox();
         document.getElementById("clearScanBtn").style.display = "none";
         scanInput.focus();
       }
 
       /* ─── Suggestions ────────────────────────────────────── */
+      const _suggBackdrop = document.getElementById("suggBackdrop");
+      function showSuggBox() {
+        document.getElementById("productSuggestions").style.display = "block";
+        _suggBackdrop.classList.add("show");
+      }
+      function hideSuggBox() {
+        document.getElementById("productSuggestions").style.display = "none";
+        _suggBackdrop.classList.remove("show");
+      }
+      _suggBackdrop.addEventListener("click", hideSuggBox);
+
       scanInput.addEventListener("input", (e) => {
         const clearBtn = document.getElementById("clearScanBtn");
         const hasValue = !!e.target.value;
@@ -2548,7 +2948,7 @@
       function searchProducts(query) {
         const box = document.getElementById("productSuggestions");
         if (!query || query.length < 2) {
-          box.style.display = "none";
+          hideSuggBox();
           return;
         }
         query = query.toLowerCase();
@@ -2572,7 +2972,7 @@
           .map(([sku, p]) => ({ sku, description: p.description }));
 
         if (!results.length) {
-          box.style.display = "none";
+          hideSuggBox();
           return;
         }
 
@@ -2589,28 +2989,37 @@
           div.onmousedown = (e) => {
             e.preventDefault();
             suppressBlur = true;
-            box.style.display = "none";
+            hideSuggBox();
             document.getElementById("clearScanBtn").style.display = "none";
             addRowFast(item.sku, 1);
             scanInput.value = "";
           };
           // Touch support for mobile suggestion taps — ignore if finger scrolled
           let _sugTouchY = 0;
-          div.addEventListener("touchstart", (e) => {
-            _sugTouchY = e.touches[0].clientY;
-          }, { passive: true });
-          div.addEventListener("touchend", (e) => {
-            if (Math.abs(e.changedTouches[0].clientY - _sugTouchY) > 8) return;
-            e.preventDefault();
-            suppressBlur = true;
-            box.style.display = "none";
-            document.getElementById("clearScanBtn").style.display = "none";
-            addRowFast(item.sku, 1);
-            scanInput.value = "";
-          }, { passive: false });
+          div.addEventListener(
+            "touchstart",
+            (e) => {
+              _sugTouchY = e.touches[0].clientY;
+            },
+            { passive: true },
+          );
+          div.addEventListener(
+            "touchend",
+            (e) => {
+              if (Math.abs(e.changedTouches[0].clientY - _sugTouchY) > 8)
+                return;
+              e.preventDefault();
+              suppressBlur = true;
+              hideSuggBox();
+              document.getElementById("clearScanBtn").style.display = "none";
+              addRowFast(item.sku, 1);
+              scanInput.value = "";
+            },
+            { passive: false },
+          );
           box.appendChild(div);
         });
-        box.style.display = "block";
+        showSuggBox();
       }
 
       document.addEventListener("click", (e) => {
@@ -2618,11 +3027,13 @@
           !e.target.closest("#scanInput") &&
           !e.target.closest("#productSuggestions")
         )
-          document.getElementById("productSuggestions").style.display = "none";
+          hideSuggBox();
       });
 
       /* ─── Search ─────────────────────────────────────────── */
-      function _norm(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ""); }
+      function _norm(s) {
+        return s.toLowerCase().replace(/[^a-z0-9]/g, "");
+      }
 
       function fuzzyMatch(text, query) {
         const nText = _norm(text);
@@ -2630,7 +3041,11 @@
         if (nQuery && nText.includes(nQuery)) return true;
         // Word-by-word fallback (original casing, space-split)
         const lText = text.toLowerCase();
-        return query.toLowerCase().split(/\s+/).filter(Boolean).every((w) => lText.includes(w));
+        return query
+          .toLowerCase()
+          .split(/\s+/)
+          .filter(Boolean)
+          .every((w) => lText.includes(w));
       }
 
       searchInput.addEventListener("input", () => {
@@ -2639,7 +3054,10 @@
       });
 
       searchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") { e.preventDefault(); searchInput.blur(); }
+        if (e.key === "Enter") {
+          e.preventDefault();
+          searchInput.blur();
+        }
       });
 
       function searchTable() {
@@ -2706,11 +3124,15 @@
         const missing = rows.filter((r) =>
           r.classList.contains("missing-item"),
         ).length;
-        countsDiv.innerHTML =
-          `<span>Unique SKUs: ${skus.size}</span>` +
-          (missing > 0
-            ? `<span style="color:var(--text-3);font-weight:400;">|</span><span style="color:#c12525;font-weight:700;">Not Found: ${missing}</span>`
-            : "");
+
+        document.getElementById("statEntries").textContent =
+          `Entries: ${rows.length}`;
+        document.getElementById("statSkus").textContent =
+          `Unique SKUs: ${skus.size}`;
+        const notFoundEl = document.getElementById("statNotFound");
+        notFoundEl.textContent = `Not Found: ${missing}`;
+        notFoundEl.classList.toggle("has-missing", missing > 0);
+
         const emptyEl = document.getElementById("emptyState");
         if (emptyEl) emptyEl.classList.toggle("show", rows.length === 0);
       }
@@ -2950,11 +3372,15 @@
                 : "";
             const status = s.status || (s.csv ? "Exported" : "Draft");
             const badgeClass =
-              status === "Exported"     ? "badge-exported"   :
-              status === "Closed"       ? "badge-closed"     :
-              status === "Imported"     ? "badge-imported"   :
-              status === "Re-imported"  ? "badge-reimported" :
-                                          "badge-draft";
+              status === "Exported"
+                ? "badge-exported"
+                : status === "Closed"
+                  ? "badge-closed"
+                  : status === "Imported"
+                    ? "badge-imported"
+                    : status === "Re-imported"
+                      ? "badge-reimported"
+                      : "badge-draft";
             const warnIcon = status === "Draft" ? " ⚠️" : "";
             const exportLine = s.exportName
               ? `<span style="font-size:11px;color:#64748b;">📁 ${s.exportName}</span>`
@@ -3007,44 +3433,45 @@
 
       /* ─── History sheet drag ─────────────────────────────── */
       (function setupHistoryDrag() {
-        const panel  = document.getElementById("historyPanel");
-        const box    = document.getElementById("historyBox");
+        const panel = document.getElementById("historyPanel");
+        const box = document.getElementById("historyBox");
         const handle = document.getElementById("historyDragHandle");
-        const h3     = box.querySelector("h3");
+        const h3 = box.querySelector("h3");
 
-        const DEFAULT_VH  = 75;
-        const MAX_VH      = 92;
-        const CLOSE_PX    = 110;
+        const DEFAULT_VH = 75;
+        const MAX_VH = 92;
+        const CLOSE_PX = 110;
         const COLLAPSE_PX = 80;
-        const EXPAND_PX   = 55;
+        const EXPAND_PX = 55;
 
         let isExpanded = false;
-        let dragging   = false;
-        let startY     = 0;
-        let lastDy     = 0;
+        let dragging = false;
+        let startY = 0;
+        let lastDy = 0;
 
         panel._sheetReset = () => {
           isExpanded = false;
-          box.style.height     = "";
-          box.style.transform  = "";
+          box.style.height = "";
+          box.style.transform = "";
           box.style.transition = "";
-          panel.style.background  = "";
-          panel.style.transition  = "";
+          panel.style.background = "";
+          panel.style.transition = "";
         };
 
         function snapTo(vh) {
-          box.style.transition = "transform .3s cubic-bezier(0.32,.72,0,1), height .3s cubic-bezier(0.32,.72,0,1)";
-          box.style.height     = vh + "vh";
-          box.style.transform  = "";
-          panel.style.transition  = "background .3s ease";
-          panel.style.background  = "";
+          box.style.transition =
+            "transform .3s cubic-bezier(0.32,.72,0,1), height .3s cubic-bezier(0.32,.72,0,1)";
+          box.style.height = vh + "vh";
+          box.style.transform = "";
+          panel.style.transition = "background .3s ease";
+          panel.style.background = "";
         }
 
         function closeAnimated() {
-          box.style.transition    = "transform .3s cubic-bezier(0.32,.72,0,1)";
-          box.style.transform     = "translateY(100%)";
-          panel.style.transition  = "background .3s ease";
-          panel.style.background  = "rgba(0,0,0,0)";
+          box.style.transition = "transform .3s cubic-bezier(0.32,.72,0,1)";
+          box.style.transform = "translateY(100%)";
+          panel.style.transition = "background .3s ease";
+          panel.style.background = "rgba(0,0,0,0)";
           setTimeout(() => {
             panel.classList.remove("open");
             panel._sheetReset();
@@ -3053,9 +3480,9 @@
 
         function onTouchStart(clientY) {
           dragging = true;
-          startY   = clientY;
-          lastDy   = 0;
-          box.style.transition   = "none";
+          startY = clientY;
+          lastDy = 0;
+          box.style.transition = "none";
           panel.style.transition = "none";
         }
 
@@ -3070,9 +3497,12 @@
             panel.style.background = `rgba(0,0,0,${alpha})`;
           } else {
             const baseVH = isExpanded ? MAX_VH : DEFAULT_VH;
-            const baseH  = window.innerHeight * baseVH / 100;
-            const newH   = Math.min(window.innerHeight * MAX_VH / 100, baseH - dy);
-            box.style.height    = newH + "px";
+            const baseH = (window.innerHeight * baseVH) / 100;
+            const newH = Math.min(
+              (window.innerHeight * MAX_VH) / 100,
+              baseH - dy,
+            );
+            box.style.height = newH + "px";
             box.style.transform = "";
           }
         }
@@ -3101,20 +3531,39 @@
         }
 
         // Attach to pill handle
-        handle.addEventListener("touchstart", (e) => onTouchStart(e.touches[0].clientY), { passive: true });
-        handle.addEventListener("touchmove",  (e) => { e.preventDefault(); onTouchMove(e.touches[0].clientY); }, { passive: false });
-        handle.addEventListener("touchend",   onTouchEnd);
+        handle.addEventListener(
+          "touchstart",
+          (e) => onTouchStart(e.touches[0].clientY),
+          { passive: true },
+        );
+        handle.addEventListener(
+          "touchmove",
+          (e) => {
+            e.preventDefault();
+            onTouchMove(e.touches[0].clientY);
+          },
+          { passive: false },
+        );
+        handle.addEventListener("touchend", onTouchEnd);
 
         // Also attach to h3 (excluding the ✕ close button)
-        h3.addEventListener("touchstart", (e) => {
-          if (e.target.closest("span")) return;
-          onTouchStart(e.touches[0].clientY);
-        }, { passive: true });
-        h3.addEventListener("touchmove", (e) => {
-          if (!dragging) return;
-          e.preventDefault();
-          onTouchMove(e.touches[0].clientY);
-        }, { passive: false });
+        h3.addEventListener(
+          "touchstart",
+          (e) => {
+            if (e.target.closest("span")) return;
+            onTouchStart(e.touches[0].clientY);
+          },
+          { passive: true },
+        );
+        h3.addEventListener(
+          "touchmove",
+          (e) => {
+            if (!dragging) return;
+            e.preventDefault();
+            onTouchMove(e.touches[0].clientY);
+          },
+          { passive: false },
+        );
         h3.addEventListener("touchend", onTouchEnd);
       })();
 
@@ -3376,27 +3825,9 @@
       });
 
       /* ─── Settings menu ─────────────────────────────────── */
-      function toggleSettingsMenu(e) {
-        e.stopPropagation();
-        document.getElementById("settingsMenu").classList.toggle("open");
-      }
-
-      function closeSettingsMenu() {
-        document.getElementById("settingsMenu").classList.remove("open");
-      }
-
-      document.addEventListener("click", (e) => {
-        const btn = document.getElementById("settingsBtn");
-        const menu = document.getElementById("settingsMenu");
-        if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
-          closeSettingsMenu();
-        }
-      });
-
       /* ─── Import CSV file ────────────────────────────────── */
       function triggerImport() {
         document.getElementById("importFileInput").click();
-        closeSettingsMenu();
       }
 
       function parseCSVLine(line) {
@@ -3404,101 +3835,134 @@
         let cur = "";
         let inQ = false;
         for (let i = 0; i < line.length; i++) {
-          if (line[i] === '"') { inQ = !inQ; }
-          else if (line[i] === "," && !inQ) { result.push(cur); cur = ""; }
-          else { cur += line[i]; }
+          if (line[i] === '"') {
+            inQ = !inQ;
+          } else if (line[i] === "," && !inQ) {
+            result.push(cur);
+            cur = "";
+          } else {
+            cur += line[i];
+          }
         }
         result.push(cur);
         return result;
       }
 
-      document.getElementById("importFileInput").addEventListener("change", async function (e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        this.value = ""; // reset so the same file can be re-imported later
+      document
+        .getElementById("importFileInput")
+        .addEventListener("change", async function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          this.value = ""; // reset so the same file can be re-imported later
 
-        let text;
-        try { text = await file.text(); }
-        catch { showAlert("Could not read the file."); return; }
-
-        const rawLines = text.split(/\r?\n/).map((l) => l.trim()).filter((l) => l);
-        if (!rawLines.length) { showAlert("The file appears to be empty."); return; }
-
-        const header = parseCSVLine(rawLines[0]).map((h) => h.trim().replace(/"/g, "").toLowerCase());
-        const skuCol = header.findIndex((h) =>
-          h === "system id" || h === "system_id" || h === "sku" || h === "id"
-        );
-        const qtyCol = header.findIndex((h) =>
-          h === "order qty" || h === "order_qty" || h === "qty" || h === "quantity"
-        );
-
-        if (skuCol === -1) {
-          showAlert('Could not find a "System Id" column.\n\nMake sure the first row has headers like "System Id" and optionally "Order Qty".');
-          return;
-        }
-
-        const items = [];
-        for (let i = 1; i < rawLines.length; i++) {
-          const cols = parseCSVLine(rawLines[i]);
-          const sku = (cols[skuCol] || "").trim().replace(/"/g, "");
-          if (!sku) continue;
-          const qty = qtyCol !== -1 ? (parseInt(cols[qtyCol]) || 1) : 1;
-          items.push({ id: sku, qty: Math.max(1, qty) });
-        }
-
-        if (!items.length) { showAlert("No valid rows found in the file."); return; }
-
-        const modal = document.getElementById("reimportModal");
-        const msg = document.getElementById("reimportMsg");
-        const addBtn = document.getElementById("reimportAddBtn");
-        const repBtn = document.getElementById("reimportReplaceBtn");
-        const canBtn = document.getElementById("reimportCancelBtn");
-
-        const qtyNote = qtyCol === -1 ? " (no Qty column — defaulting to 1 each)" : "";
-        msg.textContent = `Import ${items.length} item(s) from "${file.name}"${qtyNote}. How would you like to add them?`;
-        modal.classList.add("open");
-
-        function doFileImport(replace) {
-          modal.classList.remove("open");
-
-          // Create a new session immediately for this file import
-          closeActiveSession();
-          activeSession = {
-            id: Date.now(),
-            num: nextSessionNum(),
-            startTime: new Date().toLocaleString(),
-            status: "Imported",
-            skuCount: 0,
-            items: [],
-            exportName: file.name,
-            importedFrom: file.name,
-          };
-          const sessions = getSessions();
-          sessions.unshift(activeSession);
-          saveSessions(sessions.slice(0, 30));
-          updateSessionWarningBadge();
-
-          if (replace) {
-            tableBody.innerHTML = "";
-            localStorage.removeItem("scannedItems");
+          let text;
+          try {
+            text = await file.text();
+          } catch {
+            showAlert("Could not read the file.");
+            return;
           }
 
-          isLoading = true;
-          [...items].reverse().forEach((d) => addRowFast(d.id, d.qty, false));
-          isLoading = false;
+          const rawLines = text
+            .split(/\r?\n/)
+            .map((l) => l.trim())
+            .filter((l) => l);
+          if (!rawLines.length) {
+            showAlert("The file appears to be empty.");
+            return;
+          }
 
-          renumber();
-          save();
-          highlightDuplicates();
-          updateUniqueCount();
-          updateActiveSession();
-          scrollToTopSmooth();
-        }
+          const header = parseCSVLine(rawLines[0]).map((h) =>
+            h.trim().replace(/"/g, "").toLowerCase(),
+          );
+          const skuCol = header.findIndex(
+            (h) =>
+              h === "system id" ||
+              h === "system_id" ||
+              h === "sku" ||
+              h === "id",
+          );
+          const qtyCol = header.findIndex(
+            (h) =>
+              h === "order qty" ||
+              h === "order_qty" ||
+              h === "qty" ||
+              h === "quantity",
+          );
 
-        addBtn.onclick = () => doFileImport(false);
-        repBtn.onclick = () => doFileImport(true);
-        canBtn.onclick = () => modal.classList.remove("open");
-      });
+          if (skuCol === -1) {
+            showAlert(
+              'Could not find a "System Id" column.\n\nMake sure the first row has headers like "System Id" and optionally "Order Qty".',
+            );
+            return;
+          }
+
+          const items = [];
+          for (let i = 1; i < rawLines.length; i++) {
+            const cols = parseCSVLine(rawLines[i]);
+            const sku = (cols[skuCol] || "").trim().replace(/"/g, "");
+            if (!sku) continue;
+            const qty = qtyCol !== -1 ? parseInt(cols[qtyCol]) || 1 : 1;
+            items.push({ id: sku, qty: Math.max(1, qty) });
+          }
+
+          if (!items.length) {
+            showAlert("No valid rows found in the file.");
+            return;
+          }
+
+          const modal = document.getElementById("reimportModal");
+          const msg = document.getElementById("reimportMsg");
+          const addBtn = document.getElementById("reimportAddBtn");
+          const repBtn = document.getElementById("reimportReplaceBtn");
+          const canBtn = document.getElementById("reimportCancelBtn");
+
+          const qtyNote =
+            qtyCol === -1 ? " (no Qty column — defaulting to 1 each)" : "";
+          msg.textContent = `Import ${items.length} item(s) from "${file.name}"${qtyNote}. How would you like to add them?`;
+          modal.classList.add("open");
+
+          function doFileImport(replace) {
+            modal.classList.remove("open");
+
+            // Create a new session immediately for this file import
+            closeActiveSession();
+            activeSession = {
+              id: Date.now(),
+              num: nextSessionNum(),
+              startTime: new Date().toLocaleString(),
+              status: "Imported",
+              skuCount: 0,
+              items: [],
+              exportName: file.name,
+              importedFrom: file.name,
+            };
+            const sessions = getSessions();
+            sessions.unshift(activeSession);
+            saveSessions(sessions.slice(0, 30));
+            updateSessionWarningBadge();
+
+            if (replace) {
+              tableBody.innerHTML = "";
+              localStorage.removeItem("scannedItems");
+            }
+
+            isLoading = true;
+            [...items].reverse().forEach((d) => addRowFast(d.id, d.qty, false));
+            isLoading = false;
+
+            renumber();
+            save();
+            highlightDuplicates();
+            updateUniqueCount();
+            updateActiveSession();
+            scrollToTopSmooth();
+          }
+
+          addBtn.onclick = () => doFileImport(false);
+          repBtn.onclick = () => doFileImport(true);
+          canBtn.onclick = () => modal.classList.remove("open");
+        });
 
       /* ─── Boot ───────────────────────────────────────────── */
       loadProducts().then(() => {
