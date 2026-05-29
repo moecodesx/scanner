@@ -2464,6 +2464,7 @@
     </script>
 
     <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <script src="config.js"></script>
     <script>
       /* ─── DOM refs ───────────────────────────────────────── */
       const video = document.getElementById("video");
@@ -5074,7 +5075,7 @@
         });
 
       // ── AI Item Counter ──────────────────────────────────────────────────────────
-      const CLAUDE_API_KEY = "YOUR_CLAUDE_API_KEY_HERE";
+      // CLAUDE_API_KEY is loaded from config.js (gitignored)
 
       let _aiCountTarget = null;
 
