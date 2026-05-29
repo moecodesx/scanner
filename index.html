@@ -5137,10 +5137,23 @@
           const base64 = await fileToBase64(file);
           const mediaType = "image/jpeg"; // fileToBase64 always outputs JPEG via canvas
 
+          const apiKey = (typeof CLAUDE_API_KEY !== 'undefined' && CLAUDE_API_KEY && !CLAUDE_API_KEY.startsWith('YOUR_'))
+            ? CLAUDE_API_KEY
+            : localStorage.getItem('claude_api_key');
+
+          if (!apiKey) {
+            const entered = await showPrompt('Enter your Claude API key to enable AI counting.\n\nIt will be saved on this device only.', '');
+            if (!entered) return;
+            localStorage.setItem('claude_api_key', entered.trim());
+            _aiCountTarget = { input, itemLabel };
+            handleAiCountFile(file);
+            return;
+          }
+
           const res = await fetch("https://api.anthropic.com/v1/messages", {
             method: "POST",
             headers: {
-              "x-api-key": CLAUDE_API_KEY,
+              "x-api-key": apiKey,
               "anthropic-version": "2023-06-01",
               "content-type": "application/json",
               "anthropic-dangerous-direct-browser-access": "true",
