@@ -5199,8 +5199,7 @@
             return;
           }
 
-          const current = parseInt(input.value) || 0;
-          input.value = current + count;
+          input.value = count;
           input.dispatchEvent(new Event("change"));
 
           input.style.transition = "background 0.3s";
